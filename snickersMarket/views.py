@@ -9,6 +9,11 @@ from .serializers import ProductSerializer
 from rest_framework import generics
 
 
+class ProductListCreate(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
 class IndexView(generic.ListView):
     template_name = 'snickersMarket/index.html'
     context_object_name = 'products_list'
