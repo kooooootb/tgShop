@@ -1,6 +1,0 @@
-Django==3.2.12
-sqlparse==0.4.2
-tzdata==2022.1
-djangorestframework==3.13.1
-pytz==2022.1
-django-cors-headers==3.10.1
