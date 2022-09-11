@@ -1,1 +1,3 @@
 !.gitignore
+
+frontend/node_modules/**
