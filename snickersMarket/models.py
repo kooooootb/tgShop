@@ -8,7 +8,7 @@ class Manufacturer(models.Model):
     def __str__(self):
         return self.name
 
-#Update
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=300)
@@ -16,9 +16,7 @@ class Product(models.Model):
     price = models.IntegerField()
     image = models.ImageField(default='none')
 
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, default='man')
 
     def __str__(self):
         return self.name
-
-#Add new models

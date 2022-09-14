@@ -31,7 +31,7 @@ class DetailView(generic.DetailView):
 
 
 @api_view(['GET', 'POST'])
-def note(request):
+def products_view(request):
     if request.method == 'GET':
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
@@ -46,9 +46,9 @@ def note(request):
 
 
 @api_view(['DELETE'])
-def note_detail(request, pk):
-    products = get_object_or_404(Product, pk=pk)
+def product_detail_view(request, pk):
+    product = get_object_or_404(Product, pk=pk)
 
     if request.method == 'DELETE':
-        note.delete()
+        product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
