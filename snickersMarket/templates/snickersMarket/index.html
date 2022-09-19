@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Catalogue page</title>
+    <link rel="stylesheet" type="text/css" href={% static "main.css" %} >
 </head>
+
 <body>
 
-{% if products_list %}
-    <ul>
-    {% for product in products_list %}
-        <li><a href="{% url 'snickersMarket:detail' product.id %}">{{ product.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+{% verbatim %}
+    <div id="app">
+        <h1>{{ product }}</h1>
 
+        <div
+        class="color-box"
+        v-for="(variant, index) in variants"
+        :key="variant.variantId"
+        :style="{ backgroundColor: variant.variantColor }"
+        @mouseover="updateProduct(index)"
+        ></div>
+
+        <img :src="image" :alttext="alttext" class="primaryImage"/>
+    </div>
+{% endverbatim %}
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script src={% static "main.js" %}></script>
 </body>
 </html>

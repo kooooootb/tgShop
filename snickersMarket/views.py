@@ -12,15 +12,13 @@ from rest_framework.response import Response
 from rest_framework import status, generics
 
 
-class ProductListCreate(generics.ListCreateAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
+class IndexView(generic.ListView):
+    model = Product
+    template_name = 'snickersMarket/index.html'
+    context_object_name = 'products_list'
 
-
-def index_view(request):
-    all_products = Product.objects.all()
-    serializer = ProductSerializer(all_products, many=True)
-    return render(request, 'index.html', {'products_list': serializer.data})
+    def get_queryset(self):
+        return Product.objects.all()
 
 
 class DetailView(generic.DetailView):
