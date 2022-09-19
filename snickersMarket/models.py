@@ -16,7 +16,7 @@ class Product(models.Model):
     price = models.IntegerField()
     image = models.ImageField(default='none')
 
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, default='man')
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

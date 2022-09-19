@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 from .models import Product
 from .serializers import ProductSerializer
@@ -16,13 +17,10 @@ class ProductListCreate(generics.ListCreateAPIView):
     serializer_class = ProductSerializer
 
 
-class IndexView(generic.ListView):
-    template_name = 'index.html'
-    context_object_name = 'products_list'
-
-    def get_queryset(self):
-        """Return all products."""
-        return Product.objects.all()
+def index_view(request):
+    all_products = Product.objects.all()
+    serializer = ProductSerializer(all_products, many=True)
+    return render(request, 'index.html', {'products_list': serializer.data})
 
 
 class DetailView(generic.DetailView):
@@ -30,6 +28,7 @@ class DetailView(generic.DetailView):
     template_name = 'snickersMarket/detail.html'
 
 
+@ensure_csrf_cookie
 @api_view(['GET', 'POST'])
 def products_view(request):
     if request.method == 'GET':
@@ -45,10 +44,15 @@ def products_view(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['DELETE'])
+@api_view(['DELETE', 'GET'])
 def product_detail_view(request, pk):
     product = get_object_or_404(Product, pk=pk)
 
     if request.method == 'DELETE':
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    elif request.method == 'GET':
+        product = get_object_or_404(Product, pk=pk)
+        serializer = ProductSerializer(product, many=False)
+        return Response(serializer.data)

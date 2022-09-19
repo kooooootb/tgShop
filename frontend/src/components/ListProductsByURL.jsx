@@ -1,6 +1,6 @@
 import Product from "./Product"
 
-function App() {
+function ListProductsByURL() {
     return(
         <div>
             <Product/>
@@ -8,4 +8,4 @@ function App() {
     );
 }
 
-export default App;
+export default ListProductsByURL;

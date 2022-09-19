@@ -11,6 +11,11 @@
     <title>React App</title>
   </head>
   <body>
+
+    {% block content %}
+        {{ products_list | json_script:'products_list' }}
+    {% endblock %}
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
