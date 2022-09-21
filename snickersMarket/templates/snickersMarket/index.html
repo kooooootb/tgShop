@@ -8,22 +8,24 @@
 </head>
 
 <body>
-
-{% verbatim %}
     <div id="app">
-        <h1>{{ product }}</h1>
+{% verbatim %}
+        <div class="element" v-for="(element, id) in elements" :key="element.id">
 
-        <div
-        class="color-box"
-        v-for="(variant, index) in variants"
-        :key="variant.variantId"
-        :style="{ backgroundColor: variant.variantColor }"
-        @mouseover="updateProduct(index)"
-        ></div>
+            <a :href="getUrl(element.id)">{{ element.name }}</a>
 
-        <img :src="image" :alttext="alttext" class="primaryImage"/>
-    </div>
+            <p>{{ element.description }}</p>
+
+            <img :src="element.image" :alttext="element.alttext" class="primaryImage"/>
+
+        </div>
 {% endverbatim %}
+    </div>
+
+    {{ products_list | json_script:'products' }}
+    <script>
+        const urlRoot = '{% url 'snickersMarket:index' %}'
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
     <script src={% static "main.js" %}></script>

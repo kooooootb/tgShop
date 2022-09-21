@@ -3,40 +3,39 @@ var app = new Vue({
     data: {
         product: "Sneakers",
         selectedVariant: 0,
-        variants: [
-            {
-                variantImage: "/static/samplePicGreen.jpg",
-                variantColor: "green",
-                variantAlttext: "Old sneakers",
-                variantId: 2201,
-            },
-            {
-                variantImage: "/static/samplePicBlue.jpg",
-                variantColor: "blue",
-                variantAlttext: "Soft slippers",
-                variantId: 2202,
-            },
-            {
-                variantImage: "/static/samplePicBlack.jpg",
-                variantColor: "black",
-                variantAlttext: "Soft slippers",
-                variantId: 2203,
-            },
-        ]
+        elements: []
     },
     methods: {
         updateProduct(index){
             this.selectedVariant = index;
+        },
+        getUrl(id){
+            return urlRoot + `${id}/`
         }
     },
     computed: {
         image(){
-            return this.variants[this.selectedVariant].variantImage
+            return this.elements[this.selectedVariant].image
         },
         alttext(){
-            return this.variants[this.selectedVariant].variantAlttext
+            return this.elements[this.selectedVariant].name
+        },
+        description() {
+            return this.elements[this.selectedVariant].description
         }
     }
 
 
 })
+
+fetch('api/?' +  new URLSearchParams({
+    user_id: 777,
+}), {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+})
+    .then((response) =>
+        response.json())
+    .then((data) => app.elements = data)

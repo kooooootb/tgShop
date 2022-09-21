@@ -8,3 +8,9 @@
     width: 400px;
     height: 400px;
 }
+
+.element {
+    width: 600px;
+    height: 200px;
+    border: 20px black;
+}
