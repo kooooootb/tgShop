@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create page</title>
+</head>
+<body>
+
+<form action="/edit/api/create_product/" method="post">
+    {% csrf_token %}
+
+    <div>
+        <input name="name" id="name" value="Simple shoes">
+        <label for="name">Name here</label>
+    </div>
+
+    <div>
+        <textarea name="description" id="description"></textarea>
+        <label for="description">Write description for product</label>
+    </div>
+
+    <div>
+        <input name="in_stock" id="in_stock" value="10">
+        <label for="in_stock">How much left?</label>
+    </div>
+
+    <div>
+        <input name="price" id="price" value="200">
+        <label for="price">How much cost?</label>
+    </div>
+
+    <div>
+        <input name="manufacturer" id="manufacturer" value="man">
+        <label for="manufacturer">Who created it?</label>
+    </div>
+
+    <div>
+        <button>Create product</button>
+    </div>
+
+</form>
+
+</body>
+</html>

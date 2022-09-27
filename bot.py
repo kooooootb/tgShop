@@ -12,7 +12,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 
 
 def create_keyboard():
-    web_app = WebAppInfo("marketTest.html")
+    web_app = WebAppInfo("https://google.com")
     one_butt = KeyboardButton(text="open web page", web_app=web_app)
     keyboard = ReplyKeyboardMarkup(keyboard=[[one_butt]], row_width=1)
 

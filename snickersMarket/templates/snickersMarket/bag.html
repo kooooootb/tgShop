@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bag page</title>
+</head>
+<body>
+    <div id="bag">
+        {% verbatim %}
+            <div class="element" v-for="(element, id) in elements" :key="element.id">
+
+                <a :href="getUrl(element.id)">{{ element.name }}</a>
+
+                <p>
+                    {{ element.product }}: amount: {{ element.amount }}, color: {{ element.color }}, size: {{ element.size }}
+                </p>
+
+            </div>
+        {% endverbatim %}
+    </div>
+
+    <script>
+        const urlRoot = '{% url 'snickersMarket:index' %}'
+    </script>
+
+    {% load static %}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script src={% static "bag.js" %}></script>
+</body>
+</html>

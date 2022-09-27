@@ -1,20 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Catalogue page</title>
+    <link rel="stylesheet" type="text/css" href={% static "main.css" %} >
 </head>
+
 <body>
+    <a id="edit button" href="/edit" style="opacity: 1" aria-disabled="false">
+        <button>Edit products</button>
+    </a>
 
-{% if products_list %}
-    <ul>
-    {% for product in products_list %}
-        <li><a href="{% url 'snickersMarket:detail' product.id %}">{{ product.name }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+    <div id="app">
+{% verbatim %}
+        <div class="element" v-for="(element, id) in elements" :key="element.id">
 
+            <a :href="getUrl(element.id)">{{ element.name }}</a>
+
+            <p>{{ element.description }}</p>
+
+            <img :src="element.image" :alttext="element.alttext" class="primaryImage"/>
+
+        </div>
+{% endverbatim %}
+    </div>
+
+    <script>
+        const urlRoot = '{% url 'snickersMarket:index' %}'
+    </script>
+
+    <script>
+        const is_editor = {{ is_editor }}
+        const editButtonStyle = document.getElementById('edit button').style
+
+        if(is_editor){
+            editButtonStyle.display = 'block';
+        }else{
+            editButtonStyle.display = 'none';
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+    <script src={% static "main.js" %}></script>
 </body>
 </html>
