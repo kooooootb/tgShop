@@ -1,8 +1,10 @@
+const elements = []
+
 var app = new Vue({
     el: "#app",
     data: {
         selectedVariant: 0,
-        elements: []
+        elements: elements
     },
     methods: {
         updateProduct(index){
@@ -25,7 +27,7 @@ var app = new Vue({
     }
 })
 
-fetch('api/?user_id=777&id=100', {
+fetch(`api/?user_id=${777}`, {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'

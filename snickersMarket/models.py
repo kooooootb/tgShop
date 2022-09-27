@@ -15,6 +15,7 @@ class Product(models.Model):
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     in_stock = models.IntegerField()
+    pre_order = models.IntegerField(default=0)
     price = models.IntegerField()
     image = models.ImageField(default='/static/defaultImage.jpg')
 
