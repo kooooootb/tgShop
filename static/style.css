@@ -1,0 +1,107 @@
+body{
+    background-color: white;
+}
+
+#MenuPanel{
+    background-color: white;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    height: 8vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    z-index: 1000;
+}
+
+.for-buttons{
+    height: 100%;
+    width: 100%;
+}
+
+#Bag{
+    height: 100%;
+    width: 100%;
+}
+
+#favourites{
+    height: 100%;
+    width: 100%;
+}
+
+#Catalog{
+    height: 100%;
+    width: 100%;
+}
+
+#inputWrapper{
+    height: 40px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+}
+#input{
+    position: fixed;
+    top: 0;
+    right: 25%;
+    left: 25%;
+    height: 40px;
+    width: 50%;
+    background-color: white;
+}
+
+#input::placeholder{
+    color: rgb(128, 128, 128, 0.5);
+}
+
+.cell{
+    height: 120px;
+    width: 80vw;
+}
+
+.product{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.product-image{
+    max-height: 200px;
+    max-width: 200px;
+}
+
+img{
+    height: 100%;
+    width: 100%;
+}
+
+.product-table{
+    width: 100%;
+}
+
+.product-info{
+    position: relative;
+    text-align: justify;
+}
+
+.name{
+    margin: 5px 5px 5px 0;
+}
+
+.product div{
+    display: inline-block;
+}
+
+.product-description{
+    position: relative;
+    margin: 3px 0 0 0;
+}
+
+.product-stock{
+    width: 30%;
+    position: absolute;
+    bottom: 1em;
+}
