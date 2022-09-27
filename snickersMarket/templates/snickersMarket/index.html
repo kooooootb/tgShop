@@ -8,6 +8,10 @@
 </head>
 
 <body>
+    <a id="edit button" href="/edit" style="opacity: 1" aria-disabled="false">
+        <button>Edit products</button>
+    </a>
+
     <div id="app">
 {% verbatim %}
         <div class="element" v-for="(element, id) in elements" :key="element.id">
@@ -22,9 +26,19 @@
 {% endverbatim %}
     </div>
 
-    {{ products_list | json_script:'products' }}
     <script>
         const urlRoot = '{% url 'snickersMarket:index' %}'
+    </script>
+
+    <script>
+        const is_editor = {{ is_editor }}
+        const editButtonStyle = document.getElementById('edit button').style
+
+        if(is_editor){
+            editButtonStyle.display = 'block';
+        }else{
+            editButtonStyle.display = 'none';
+        }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>

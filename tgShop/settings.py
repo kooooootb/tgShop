@@ -134,4 +134,4 @@ REST_FRAMEWORK = {
      )
  }
 
-LOGIN_URL = '/login'
+LOGIN_URL = '/login/'

@@ -1,7 +1,6 @@
 var app = new Vue({
     el: "#app",
     data: {
-        product: "Sneakers",
         selectedVariant: 0,
         elements: []
     },
@@ -24,18 +23,13 @@ var app = new Vue({
             return this.elements[this.selectedVariant].description
         }
     }
-
-
 })
 
-fetch('api/?' +  new URLSearchParams({
-    user_id: 777,
-}), {
+fetch('api/?user_id=777&id=100', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json'
     },
 })
-    .then((response) =>
-        response.json())
+    .then((response) => response.json())
     .then((data) => app.elements = data)
