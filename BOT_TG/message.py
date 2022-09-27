@@ -48,7 +48,6 @@ buy_error = '''
 '''
 
 
-
 MESSAGES = {
     'start': start_message,
     'help': help_message,

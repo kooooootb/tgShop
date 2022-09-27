@@ -64,14 +64,14 @@ def products_api(request):
             login_func(request, user_id)
 
         query_params = request.query_params
-        # if query_params:
-        #     fields = [f.name for f in Product._meta.get_fields()]
-        #
-        #     kwargs = {key: value for key, value in query_params.items() if key in fields}
-        #
-        #     products = Product.objects.filter(**kwargs)
-        # else:
-        products = Product.objects.all()
+        if query_params:
+            fields = [f.name for f in Product._meta.get_fields()]
+
+            kwargs = {key: value for key, value in query_params.items() if key in fields}
+
+            products = Product.objects.filter(**kwargs)
+        else:
+            products = Product.objects.all()
 
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
