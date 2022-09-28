@@ -2,24 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Manufacturer(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-
 class Product(models.Model):
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=300)
+    description = models.CharField(max_length=300, blank=True)
+
     brand = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
+    model = models.CharField(max_length=100, blank=True)
+
     in_stock = models.IntegerField()
     pre_order = models.IntegerField(default=0)
     price = models.IntegerField()
-    image = models.ImageField(default='/static/defaultImage.jpg')
 
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    color = models.CharField(max_length=100)
+
+    image = models.ImageField(upload_to='static/images/', default='/static/defaultImage.jpg')
 
     def __str__(self):
         return f'{self.name}'

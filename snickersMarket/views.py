@@ -33,7 +33,9 @@ def index_view(request):
 def detail_view(request, pk):
     """View for detail information about single product"""
     template_html = 'snickersMarket/detail.html'
-    return render(request, template_html)
+    product = Product.objects.get(pk=pk)
+
+    return render(request, template_html, {'product': product})
 
 
 def bag_view(request):
@@ -42,7 +44,7 @@ def bag_view(request):
     return render(request, template_html)
 
 
-@permission_required('snickersMarket.add_product', raise_exception=True)
+@staff_member_required
 def edit_view(request):
     """View for creating new objects"""
     template_html = 'snickersMarket/edit.html'
@@ -149,7 +151,7 @@ def login_api(request):
 
 
 @login_required
-@permission_required('snickersMarket.add_product', raise_exception=True)
+@staff_member_required
 @api_view(['POST'])
 def create_product_api(request):
     """Create product using request"""
