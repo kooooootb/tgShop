@@ -19,14 +19,16 @@
 
 
 <div id="app" class="app" style="margin-top: 60px; margin-bottom: 9vh">
-    <!--    <catalog></catalog>-->
     <div id="MenuPanel">
+        {% verbatim %}
         <button v-for="tab in tabs"
                 v-bind:key="tab"
                 v-bind:class="['tab-button', {active: currentTab === tab}]"
+                v-bind:id="tab"
                 v-on:click="currentTab = tab">
             {{ tab }}
         </button>
+        {% endverbatim %}
     </div>
     <component v-bind:is="currentTabComponent" class="tab"></component>
 </div>

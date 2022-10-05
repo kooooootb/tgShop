@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+{%load static%}
+
+<head>
+  <meta charset="UTF-8">
+  <title>tgShop</title>
+  <link rel="stylesheet" type="text/css" href={%static "style.css"%}>
+</head>
+<body>
+
+<header>
+  <div id="inputWrapper">
+    <p>SneackersShop</p>
+    <input id="input" type="search" autocomplete="off" spellcheck="false" role="combobox" placeholder="Введите название продукта">
+  </div>
+</header>
+
+
+<div id="app" class="app" style="margin-top: 60px; margin-bottom: 9vh">
+  <div id="MenuPanel">
+    {% verbatim %}
+    <button v-for="tab in tabs"
+            v-bind:key="tab"
+            v-bind:class="['tab-button', {active: currentTab === tab}]"
+            v-bind:id="tab"
+            v-on:click="currentTab = tab">
+      {{ tab }}
+    </button>
+    {% endverbatim %}
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+<script src="app.js"></script>
+<script src="CBF.js"></script>
+</body>
+</html>
