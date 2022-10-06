@@ -203,7 +203,7 @@ async def process_successful_payment(message: types.Message):
         await bot.send_message(chat_id=message.chat.id, text=f'{key} = {val}')
 
     global address
-    await bot.send_message(chat_id=435066431, text=address)
+    # await bot.send_message(chat_id=435066431, text=address)
     await bot.send_message(
         message.chat.id,
         MESSAGES['successful_payment'].format(
