@@ -21,11 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a@+77@szv6)#9u#+zyp95ug7ui0s537#i8j288=q6^&o4h61!m'
+try:
+    SECRET_KEY = os.environ['DJANGO_KEY']
+except KeyError as e:
+    raise RuntimeError("Put DJANGO_KEY into environment") from e
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
+ALLOWED_HOSTS = ["tgshop.hopto.org"]
 
 # Application definition
 
@@ -118,11 +123,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+STATIC_ROOT = '/var/www/tgshop.hopto.org/static'
 
-# MEDIA_ROOT = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
