@@ -69,7 +69,7 @@ PICKUP_SHIPPING_OPTION.add(types.LabeledPrice('Самовывоз в Москв�
 
 @dp.message_handler(commands=['start'])
 async def process_start_command(message: types.Message):
-    web_app_test = types.WebAppInfo(url='https://dimakpa.github.io/')
+    web_app_test = types.WebAppInfo(url='https://tgshop.hopto.org/')
     one_butt = KeyboardButton(text="Тестовая страница", web_app=web_app_test)
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True).add(one_butt)
     await message.reply(MESSAGES['start'], reply_markup=keyboard)
