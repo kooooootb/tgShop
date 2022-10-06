@@ -1,3 +1,7 @@
+if(localStorage.getItem("someTag") == null) {
+    localStorage.setItem("someTag", "Home");
+}
+
 let products = [];
 let user_id = 777;
 fetch(`app/?user_id=${user_id}`,{
@@ -27,8 +31,12 @@ Vue.component('all-product', {
               <div class="product-info">
                 <h1 class="name">{{product.name}}</h1>
                 <p class="product-description">{{product.description}}</p>
-                <div class="product-stock" v-if="product.quantity" >В наличии</div>
-                <div class="product-stock" v-else-if="product.PreOrder">Предзаказ</div>
+                <div class="product-stock" v-if="product.in_stock" >В наличии  
+                    <b class="Price">{{product.price}}</b>
+                </div>
+                <div class="product-stock" v-else-if="product.pre_order">Предзаказ
+                    <b class="Price">{{product.price}}</b>
+                </div>
                 <div class="product-stock" v-else>Продажа закончена</div>
                 <form class="button-for-basket">
                   <button class="product-inBasket">В корзину</button>
@@ -108,7 +116,7 @@ Vue.component("tab-favourite", {
 let app = new Vue({
     el:'#app',
     data:{
-        currentTab: "Home",
+        currentTab: localStorage.getItem("someTag"),
         tabs:["Home", "Bag", "Favourite"]
     },
     computed:{
