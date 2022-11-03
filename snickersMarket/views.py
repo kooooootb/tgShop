@@ -49,6 +49,7 @@ def bag_view(request):
 def edit_view(request):
     """View for creating new objects"""
     template_html = 'snickersMarket/edit.html'
+
     return render(request, template_html)
 
 
