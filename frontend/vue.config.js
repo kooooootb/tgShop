@@ -4,7 +4,7 @@ module.exports ={
       sass: {
         additionalData: '@import "@/assets/styles/styles.scss";',
       }
-    },
+    }
+  },
   assetsDir: "../../static/SPA",
-  }
 }
