@@ -6,5 +6,5 @@ module.exports ={
       }
     }
   },
-  assetsDir: "../../static/SPA",
+  assetsDir: "static/",
 }
