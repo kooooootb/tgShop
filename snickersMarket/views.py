@@ -25,7 +25,7 @@ from urllib.parse import urlparse, parse_qs  # for login api
 def index_view(request):
     """View for home page, showing all products"""
     # template_html = 'snickersMarket/game.html'
-    template_html = 'snickersMarket/index.html'
+    template_html = 'index.html'
     can_edit = int(request.user.has_perm('snickersMarket.add_product'))
 
     return render(request, template_html, {'is_editor': can_edit})
