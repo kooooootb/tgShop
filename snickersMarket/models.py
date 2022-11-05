@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 
 
 class Product(models.Model):
+    class Meta:
+        permissions = [
+            ('edit_products', 'Can edit products list'),
+        ]
+
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=300, blank=True)
 
@@ -15,7 +20,7 @@ class Product(models.Model):
 
     color = models.CharField(max_length=100)
 
-    image = models.ImageField(upload_to='static/images/', default='/static/defaultImage.jpg')
+    image = models.ImageField(upload_to='static/images/')
 
     def __str__(self):
         return f'{self.name}'

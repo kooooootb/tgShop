@@ -1,6 +1,6 @@
 <template>
   <div class="v-catalog-item">
-    <img class="v-catalog-item-image" src="" alt="img">
+    <img class="v-catalog-item-image" src="product_data.image" alt="img">
     <p class="v-catalog-item-name">{{product_data.name}}</p>
     <p class="v-catalog-item-price">Price: {{product_data.price}}</p>
     <p class="v-catalog-item-in-stocks">In stocks: {{product_data.in_stock}}</p>

@@ -11,7 +11,7 @@ urlpatterns = [
     path('edit/', views.edit_view, name='create'),  # page for creating new objects
 
     # Views for api requests
-    path('api/', views.products_api, name='api_index'),  # get all products
+    path('api/products/', views.products_api, name='api_index'),  # get all products
     path('api/<int:pk>/', views.product_detail_api, name='api_detail'),  # get information of single product
     path('bag/api/', views.bag_api, name='bag'),  # get user's bag
     path('edit/api/create_product/', views.create_product_api, name='create_product'),  # create product

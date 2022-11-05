@@ -30,7 +30,9 @@ except KeyError as e:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["tgshop.hopto.org"]
+ALLOWED_HOSTS = ['tgShop.hopto.org', '127.0.0.1']
+
+CSRF_TRUSTED_ORIGINS = ['https://tgshop.hopto.org']
 
 # Application definition
 
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'tgShop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'frontend' / 'dist'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,7 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 STATIC_ROOT = '/var/www/tgshop.hopto.org/static'
 

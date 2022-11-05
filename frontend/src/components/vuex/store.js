@@ -57,7 +57,7 @@ let store = new Vuex.Store({
     },
     actions: {
         GET_PRODUCTS_FROM_API({commit}){
-            return axios('http://localhost:3000/products', {
+            return axios('https://tgshop.hopto.org/api/products/?user_id=777', {
                 method: "GET"
             })
                 .then((products) => {
