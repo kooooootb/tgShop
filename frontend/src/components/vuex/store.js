@@ -8,15 +8,11 @@ let store = new Vuex.Store({
     state: {
         products: [],
         cart: [],
-        favourit: [],
-        product:[]
+        favourit: []
     },
     mutations: {
         SET_PRODUCTS_TO_STATE: (state , products) => {
             state.products = products;
-        },
-        SET_PRODUCT_TO_STATE: (state , product) => {
-            state.product = product;
         },
         SET_CART: (state, product) => {
             if(state.cart.length){
@@ -73,9 +69,6 @@ let store = new Vuex.Store({
                     return error;
                 })
         },
-        SET_PRODUCT({commit}, product){
-            commit('SET_PRODUCT_TO_STATE', product)
-        },
         ADD_TO_CART({commit}, product){
             commit('SET_CART', product)
         },
@@ -92,9 +85,6 @@ let store = new Vuex.Store({
     getters: {
         PRODUCTS(state) {
             return state.products;
-        },
-        PRODUCT(state){
-            return state.product;
         },
         CART(state){
             return state.cart;

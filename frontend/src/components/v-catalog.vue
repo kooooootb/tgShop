@@ -1,20 +1,14 @@
 <template>
   <div class="v-catalog">
-    <keep-alive>
-      <router-view>
-      </router-view>
-    </keep-alive>
     <h1>Catalog</h1>
     <div class="v-catalog-list">
-<!--      <router-link :to="{name: 'product', params: {product: PRODUCT}}">-->
-        <v-catalog-item
-          v-for="product in PRODUCTS"
-          :key="product.id"
-          :product_data="product"
-          @AddToCart="AddToCart"
-          @AddToFavourit="AddToFavourit"
-        />
-<!--      </router-link>-->
+      <v-catalog-item
+        v-for="product in PRODUCTS"
+        :key="product.id"
+        :product_data="product"
+        @AddToCart="AddToCart"
+        @AddToFavourit="AddToFavourit"
+      />
     </div>
 
   </div>
@@ -39,16 +33,14 @@ import {mapActions, mapGetters} from "vuex";
       ...mapGetters([
           'PRODUCTS',
         'CART',
-          'FAVOURIT',
-          'PRODUCT'
+          'FAVOURIT'
       ]),
     },
     methods: {
       ...mapActions([
         'GET_PRODUCTS_FROM_API',
           'ADD_TO_CART',
-          'ADD_TO_FAVOURIT',
-          'SET_PRODUCT'
+          'ADD_TO_FAVOURIT'
 
       ]),
       AddToCart(data){
@@ -56,14 +48,10 @@ import {mapActions, mapGetters} from "vuex";
       },
       AddToFavourit(data){
         this.ADD_TO_FAVOURIT(data)
-      },
-      // AddToMainItem(data){
-      //   this.SET_PRODUCT(data);
-      // }
+      }
 
     },
     mounted() {
-
       this.GET_PRODUCTS_FROM_API();
     }
   }

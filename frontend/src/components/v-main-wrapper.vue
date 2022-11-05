@@ -17,6 +17,7 @@
 
       </div>
       <div class="tab pink">
+
         <router-link :to="{name: 'favourit', params: {favourit_data: FAVOURIT}}">
           <p class="v-main-wrapper__favourit">Favourites</p>
         </router-link>
@@ -54,7 +55,6 @@ export default {
       ...mapGetters([
         'CART',
           'FAVOURIT'
-
       ])
     },
     methods: {}, //clicks, i tp
