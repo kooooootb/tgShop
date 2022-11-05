@@ -8,11 +8,15 @@ let store = new Vuex.Store({
     state: {
         products: [],
         cart: [],
-        favourit: []
+        favourit: [],
+        product:[]
     },
     mutations: {
         SET_PRODUCTS_TO_STATE: (state , products) => {
             state.products = products;
+        },
+        SET_PRODUCT_TO_STATE: (state , product) => {
+            state.product = product;
         },
         SET_CART: (state, product) => {
             if(state.cart.length){
@@ -57,7 +61,7 @@ let store = new Vuex.Store({
     },
     actions: {
         GET_PRODUCTS_FROM_API({commit}){
-            return axios('https://tgshop.hopto.org/api/products/?user_id=777', {
+            return axios('http://localhost:3000/products', {
                 method: "GET"
             })
                 .then((products) => {
@@ -68,6 +72,9 @@ let store = new Vuex.Store({
                     console.log(error);
                     return error;
                 })
+        },
+        SET_PRODUCT({commit}, product){
+            commit('SET_PRODUCT_TO_STATE', product)
         },
         ADD_TO_CART({commit}, product){
             commit('SET_CART', product)
@@ -85,6 +92,9 @@ let store = new Vuex.Store({
     getters: {
         PRODUCTS(state) {
             return state.products;
+        },
+        PRODUCT(state){
+            return state.product;
         },
         CART(state){
             return state.cart;
