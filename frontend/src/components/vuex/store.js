@@ -7,7 +7,8 @@ Vue.use(Vuex);
 let store = new Vuex.Store({
     state: {
         products: [],
-        cart: []
+        cart: [],
+        favourit: []
     },
     mutations: {
         SET_PRODUCTS_TO_STATE: (state , products) => {
@@ -32,6 +33,26 @@ let store = new Vuex.Store({
         },
         REMOVE_FROM_CART: (state, index) => {
             state.cart.splice(index, 1)
+        },
+        SET_FAVOURIT: (state, product) => {
+            if(state.favourit.length){
+                let isProductExist = false;
+                state.favourit.map(function (item){
+                    if(item.id === product.id){
+                        isProductExist = true;
+                        item.quantity++;
+
+                    }
+                })
+                if(!isProductExist){
+                    state.favourit.push(product)
+                }
+            }else{
+                state.favourit.push(product)
+            }
+        },
+        REMOVE_FROM_FAVOURIT: (state, index) => {
+            state.favourit.splice(index, 1)
         }
     },
     actions: {
@@ -53,6 +74,12 @@ let store = new Vuex.Store({
         },
         DELETE_FROM_CART({commit}, index){
             commit('REMOVE_FROM_CART', index)
+        },
+        ADD_TO_FAVOURIT({commit}, product){
+            commit('SET_FAVOURIT', product)
+        },
+        DELETE_FROM_FAVOURIT({commit}, index){
+            commit('REMOVE_FROM_FAVOURIT', index)
         }
     },
     getters: {
@@ -61,7 +88,11 @@ let store = new Vuex.Store({
         },
         CART(state){
             return state.cart;
+        },
+        FAVOURIT(state){
+            return state.favourit;
         }
+
     }
 });
 

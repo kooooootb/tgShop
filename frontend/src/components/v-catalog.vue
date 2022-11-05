@@ -7,6 +7,7 @@
         :key="product.id"
         :product_data="product"
         @AddToCart="AddToCart"
+        @AddToFavourit="AddToFavourit"
       />
     </div>
 
@@ -31,18 +32,24 @@ import {mapActions, mapGetters} from "vuex";
     computed: {
       ...mapGetters([
           'PRODUCTS',
-        'CART'
+        'CART',
+          'FAVOURIT'
       ]),
     },
     methods: {
       ...mapActions([
         'GET_PRODUCTS_FROM_API',
-          'ADD_TO_CART'
+          'ADD_TO_CART',
+          'ADD_TO_FAVOURIT'
 
       ]),
       AddToCart(data){
         this.ADD_TO_CART(data)
+      },
+      AddToFavourit(data){
+        this.ADD_TO_FAVOURIT(data)
       }
+
     },
     mounted() {
       this.GET_PRODUCTS_FROM_API();

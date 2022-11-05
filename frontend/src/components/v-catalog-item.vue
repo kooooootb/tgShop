@@ -5,7 +5,8 @@
     <p class="v-catalog-item-price">Price: {{product_data.price}}</p>
     <p class="v-catalog-item-in-stocks">In stocks: {{product_data.in_stock}}</p>
 
-    <button class="v-catalog-item-add-to-cart-btn btn" @click="AddToCart">Bye</button>
+    <button class="v-catalog-item-add-to-cart-btn btn" @click="AddToCart">Buy</button>
+    <button class="v-catalog-item-add-to-favourit-btn btn" @click="AddToFavourit">like</button>
   </div>
 </template>
 
@@ -27,6 +28,9 @@ export default {
   methods:{
     AddToCart(){
       this.$emit('AddToCart',this.product_data)
+    },
+    AddToFavourit(){
+      this.$emit('AddToFavourit',this.product_data)
     }
   }
 }

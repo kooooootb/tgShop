@@ -2,6 +2,8 @@ import Vue from "vue";
 import Router from 'vue-router'
 import vCatalog from '../components/v-catalog'
 import vCart from '../components/v-cart'
+import vFavourit from '../components/v-favourit'
+import vMainMenu from '../components/v-main-menu'
 
 Vue.use(Router);
 
@@ -9,6 +11,12 @@ let router = new Router({
     routes: [
         {
             path: '/',
+            name: 'main',
+            component: vMainMenu
+
+        },
+        {
+            path: '/catalog',
             name: 'catalog',
             component: vCatalog
 
@@ -17,6 +25,12 @@ let router = new Router({
             path: '/cart',
             name: 'cart',
             component: vCart,
+            props: true
+        },
+        {
+            path: '/favourit',
+            name: 'favourit',
+            component: vFavourit,
             props: true
         }
         ]
