@@ -1,9 +1,10 @@
 import Vue from "vue";
 import Router from 'vue-router'
-import vCatalog from '../components/v-catalog'
-import vCart from '../components/v-cart'
-import vFavourit from '../components/v-favourit'
+import vCatalog from '../components/catalog/v-catalog'
+import vCart from '../components/cart/v-cart'
+import vFavourit from '../components/favourit/v-favourit'
 import vMainMenu from '../components/v-main-menu'
+
 
 Vue.use(Router);
 

@@ -14,19 +14,18 @@
         <router-link :to="{name: 'main'}">
           <p class="v-main-wrapper__home">Home</p>
         </router-link>
-
       </div>
       <div class="tab pink">
-
         <router-link :to="{name: 'favourit', params: {favourit_data: FAVOURIT}}">
           <p class="v-main-wrapper__favourit">Favourites</p>
         </router-link>
       </div>
       <div class="tab yellow">
         <router-link :to="{name: 'cart', params: {cart_data: CART}}">
-          <p class="v-main-wrapper__cart">Cart</p>
+          <p class="v-main-wrapper__cart" >Cart</p>
         </router-link>
       </div>
+
     </div>
   </div>
 
@@ -54,7 +53,9 @@ export default {
     computed: {
       ...mapGetters([
         'CART',
-          'FAVOURIT'
+          'FAVOURIT',
+          'PRODUCT'
+
       ])
     },
     methods: {}, //clicks, i tp
@@ -69,6 +70,7 @@ export default {
   .v-main-wrapper{
     max-width: 900px;
     margin: 0 auto;
+
     &__tabbar{
       position: fixed;
       bottom: 0;

@@ -1,5 +1,17 @@
 <template>
   <div class="v-favourit-item">
+    <v-popup
+        v-if="isInfoPopupVisible"
+        CartButtonTitle="Add to cart"
+        FavouritButtonTitle="Add to favourite"
+        :popupTitle="favourit_item_data.name"
+        @closePopup="closeInfoPopup"
+    >
+      <img class="v-catalog-item-popup__image" src="" alt="img">
+      <p class="v-catalog-item-popup__name">{{favourit_item_data.name}}</p>
+      <p class="v-catalog-item-popup__price">Price: {{favourit_item_data.price}}</p>
+      <p class="v-catalog-item-popup__in-stocks">In stocks: {{favourit_item_data.in_stock}}</p>
+    </v-popup>
     <img class="v-favourit-item-image" src="" alt="img">
     <div class="v-favourit-item-info">
       <p class="v-favourit-item-name">{{favourit_item_data.name}}</p>
@@ -7,12 +19,18 @@
       <p class="v-favourit-item-in-stocks">In stocks: {{favourit_item_data.in_stock}}</p>
     </div>
     <button @click="deleteFromFavourit">Delete</button>
+    <button class="v-catalog-item__show-info " @click="ShowPopupInfo">Show</button>
+
   </div>
 </template>
 
 <script>
+import vPopup from "../popup/v-popup"
 export default {
   name: "v-favourit-item",
+  components:{
+    vPopup
+  },
   props: {
     favourit_item_data: {
       type: Object,
@@ -22,12 +40,20 @@ export default {
     }
   },
   data(){
-    return{}
+    return{
+      isInfoPopupVisible: false
+    }
   },
   computed:{},
   methods: {
     deleteFromFavourit(){
       this.$emit('deleteFromFavourit')
+    },
+    ShowPopupInfo(){
+      this.isInfoPopupVisible = true;
+    },
+    closeInfoPopup(){
+      this.isInfoPopupVisible = false;
     }
   },
   mounted() {}
