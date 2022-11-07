@@ -5,3 +5,5 @@
 **pycache**
 
 static
+
+db.sqlite3
