@@ -9,19 +9,25 @@
       @AddToCartPopup="AddToCart"
       @AddToFavouritPopup="AddToFavourit"
     >
-      <img class="v-catalog-item-popup__image" src="" alt="img">
+      <img class="v-catalog-item-popup__image" :src="product_data.image" alt="img">
       <p class="v-catalog-item-popup__name">{{product_data.name}}</p>
       <p class="v-catalog-item-popup__price">Price: {{product_data.price}}</p>
       <p class="v-catalog-item-popup__in-stocks">In stocks: {{product_data.in_stock}}</p>
     </v-popup>
-    <img class="v-catalog-item-image" src="" alt="img">
-    <p class="v-catalog-item-name">{{product_data.name}}</p>
-    <p class="v-catalog-item-price">Price: {{product_data.price}}</p>
-    <p class="v-catalog-item-in-stocks">In stocks: {{product_data.in_stock}}</p>
+    <div class="v-catalog-items-image">
+      <img class="v-catalog-item-image" :src="product_data.image" alt="img">
+    </div>
+    <div class="v-catalog-items-item">
+      <p class="v-catalog-item-name">{{product_data.name}}</p>
+      <p class="v-catalog-item-price">Price: {{product_data.price}}</p>
+      <p class="v-catalog-item-in-stocks">In stocks: {{product_data.in_stock}}</p>
+      <button class="v-catalog-item-add-to-cart-btn btn" @click="AddToCart">Buy</button>
+      <button class="v-catalog-item-add-to-favourit-btn btn" @click="AddToFavourit">like</button>
+      <button class="v-catalog-item__show-info " @click="ShowPopupInfo">Show</button>
+    </div>
 
-    <button class="v-catalog-item-add-to-cart-btn btn" @click="AddToCart">Buy</button>
-    <button class="v-catalog-item-add-to-favourit-btn btn" @click="AddToFavourit">like</button>
-    <button class="v-catalog-item__show-info " @click="ShowPopupInfo">Show</button>
+
+
 
 
   </div>
@@ -72,6 +78,8 @@ export default {
       flex-basis: 25%;
       box-shadow: 0 0 8px 0 #2c3e50;
       padding: $padding*2;
+      justify-content: space-between;
+    background-color: #ffffff;
     margin-bottom: $margin*2;
     &__image{
       max-width: 50px;

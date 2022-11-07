@@ -7,12 +7,12 @@
         :popupTitle="favourit_item_data.name"
         @closePopup="closeInfoPopup"
     >
-      <img class="v-catalog-item-popup__image" src="" alt="img">
+      <img class="v-catalog-item-popup__image" :src="favourit_item_data.image" alt="img">
       <p class="v-catalog-item-popup__name">{{favourit_item_data.name}}</p>
       <p class="v-catalog-item-popup__price">Price: {{favourit_item_data.price}}</p>
       <p class="v-catalog-item-popup__in-stocks">In stocks: {{favourit_item_data.in_stock}}</p>
     </v-popup>
-    <img class="v-favourit-item-image" src="" alt="img">
+    <img class="v-favourit-item-image" :src="favourit_item_data.image" alt="img">
     <div class="v-favourit-item-info">
       <p class="v-favourit-item-name">{{favourit_item_data.name}}</p>
       <p class="v-favourit-item-price">Price: {{favourit_item_data.price}}</p>
@@ -63,6 +63,7 @@ export default {
 
 <style lang="scss">
 .v-favourit-item{
+  background-color: #ffffff;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;

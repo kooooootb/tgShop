@@ -65,6 +65,7 @@ import {mapActions, mapGetters} from "vuex";
 
 <style lang="scss">
   .v-catalog {
+    background-color: #ffffff;
     &_list {
       display: flex;
       flex-wrap: wrap;

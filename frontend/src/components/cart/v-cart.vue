@@ -46,6 +46,9 @@ export default {
 </script>
 
 <style lang="scss">
+.v-cart{
+  background-color: #ffffff;
+}
 .v-cart-link-to-back{
   position: absolute;
   top: 10px;
