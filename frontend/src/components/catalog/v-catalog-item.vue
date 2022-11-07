@@ -9,13 +9,17 @@
       @AddToCartPopup="AddToCart"
       @AddToFavouritPopup="AddToFavourit"
     >
-      <img class="v-catalog-item-popup__image" :src="product_data.image" alt="img">
-      <p class="v-catalog-item-popup__name">{{product_data.name}}</p>
-      <p class="v-catalog-item-popup__price">Price: {{product_data.price}}</p>
-      <p class="v-catalog-item-popup__in-stocks">In stocks: {{product_data.in_stock}}</p>
+      <div class="v-catalog-items-popup-image">
+        <img class="v-catalog-item-popup__image" :src="product_data.image_url" alt="img">
+      </div>
+      <div class="v-catalog-item-popup-content">
+        <p class="v-catalog-item-popup__name">{{product_data.name}}</p>
+        <p class="v-catalog-item-popup__price">Price: {{product_data.price}}</p>
+        <p class="v-catalog-item-popup__in-stocks">In stocks: {{product_data.in_stock}}</p>
+      </div>
     </v-popup>
     <div class="v-catalog-items-image">
-      <img class="v-catalog-item-image" :src="product_data.image" alt="img">
+      <img class="v-catalog-items__image" :src="product_data.image_url" alt="img">
     </div>
     <div class="v-catalog-items-item">
       <p class="v-catalog-item-name">{{product_data.name}}</p>
@@ -75,16 +79,28 @@ export default {
 
 <style lang="scss">
   .v-catalog-item{
-      flex-basis: 25%;
-      box-shadow: 0 0 8px 0 #2c3e50;
-      padding: $padding*2;
-      justify-content: space-between;
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    flex-basis: 25%;
+    box-shadow: 0 0 8px 0 #2c3e50;
+    padding: $padding*2;
+    justify-content: space-around;
+    align-items: center;
     background-color: #ffffff;
     margin-bottom: $margin*2;
-    &__image{
-      max-width: 50px;
-    }
 
+  }
+  .v-catalog-items{
+    flex-basis: 25%;
+    box-shadow: 0 0 8px 0 #2c3e50;
+    padding: $padding*2;
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin-bottom: $margin*2;
+    height: 30%;
+    &__image{
+      max-width: 100%;
+    }
   }
   .v-catalog-item-popup{
     display: flex;
@@ -95,8 +111,8 @@ export default {
     padding: $padding*2;
     margin-bottom: $margin*2;
 
-    &__img{
-      max-width: 50px;
+    &__image{
+      max-width: 100%;
     }
     &__name{
       justify-content: center;

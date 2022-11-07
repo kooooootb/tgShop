@@ -2,12 +2,49 @@
   "posts": [
     { "id": 1, "title": "json-server", "author": "typicode" }
   ],
-  "products": [
-    {"id":1,"name":"Nike Air Force 1'07 LX","description":"","in_stock":10,"price":20,"image":"/static/images/photo_2022-10-07_10-12-07_Gf5RCPl.jpg"},
-      {"id":2,"name":"adidas Ultraboost 4.0 DNA","description":"","in_stock":50,"price":100,"image":"/static/images/photo_2022-10-07_10-14-02_9cSgNnL.jpg"},
-      {"id":3,"name":"Alexander McQueen","description":"","in_stock":10,"price":10,"image":"/static/images/photo_2022-10-07_10-15-06_7p5MbIg.jpg"},
-      {"id":4,"name":"CDG PLAY × Converse Chuck Taylor All Star 1970s High","description":"","in_stock":10,"price":10,"image":"/static/images/photo_2022-10-07_10-15-41_nLonQ2B.jpg"},
-      {"id":5,"name":"New Balance 550","description":"","in_stock":100,"price":100,"image":"/static/images/photo_2022-10-07_10-14-30.jpg"}
+  "products":
+
+  [
+    {
+      "id": 319,
+      "name": "Nike Air Force 1'07",
+      "description": "",
+      "in_stock": 123,
+      "price": 123,
+      "image_url": "https://tgshop.hopto.org/media/images/IMG_20221107_163823_530.jpg"
+    },
+    {
+      "id": 320,
+      "name": "adidas Ultraboost 4.0 DNA",
+      "description": "",
+      "in_stock": 11,
+      "price": 213,
+      "image_url": "https://tgshop.hopto.org/media/images/photo_2022-11-07_18-57-21.jpg"
+    },
+    {
+      "id": 321,
+      "name": "New Balance 550",
+      "description": "",
+      "in_stock": 123,
+      "price": 1231,
+      "image_url": "https://tgshop.hopto.org/media/images/photo_2022-11-07_18-57-35.jpg"
+    },
+    {
+      "id": 322,
+      "name": "Alexander McQueen",
+      "description": "",
+      "in_stock": 11,
+      "price": 123,
+      "image_url": "https://tgshop.hopto.org/media/images/photo_2022-11-07_18-58-09.jpg"
+    },
+    {
+      "id": 323,
+      "name": "CDG PLAY × Converse Chuck Taylor All Star 1970s High",
+      "description": "",
+      "in_stock": 123,
+      "price": 123,
+      "image_url": "https://tgshop.hopto.org/media/images/photo_2022-11-07_18-58-57.jpg"
+    }
   ],
   "comments": [
     { "id": 1, "body": "some comment", "postId": 1 }

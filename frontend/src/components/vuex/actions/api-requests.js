@@ -17,3 +17,4 @@ export default {
     },
 }
 // http://localhost:3000/products
+// https://tgshop.hopto.org/api/products/?user_id=777

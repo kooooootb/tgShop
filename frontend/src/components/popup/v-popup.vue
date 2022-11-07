@@ -6,7 +6,6 @@
       </div>
       <div class="v-popup__content">
         <slot>
-
         </slot>
       </div>
       <div class="v-popup__footer">
@@ -79,6 +78,7 @@ export default {
     top: 0;
   }
   .v-popup{
+
     position: fixed;
     justify-content: center;
     align-items: center;
@@ -109,7 +109,8 @@ export default {
       top: 10px;
     }
     &__content{
-      display: flex;
+      display: grid;
+      grid-template-columns: 4fr 5fr;
       justify-content: center;
       align-items: center;
       flex-direction: column;
