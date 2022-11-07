@@ -129,7 +129,7 @@ STATIC_ROOT = '/var/www/tgshop.hopto.org/static'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-MEDIA_URL = 'media/'
+MEDIA_URL = 'https://tgshop.hopto.org/media'
 
 MEDIA_ROOT = '/var/www/tgshop.hopto.org/media'
 
