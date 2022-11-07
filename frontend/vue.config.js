@@ -6,5 +6,6 @@ module.exports ={
       }
     }
 
-  }
+  },
+  assetsDir: "static/",
 }
