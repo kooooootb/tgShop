@@ -3,7 +3,7 @@ from .models import Product, BagElement
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    photo_url = serializers.SerializerMethodField()
+    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
