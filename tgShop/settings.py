@@ -129,9 +129,9 @@ STATIC_ROOT = '/var/www/tgshop.hopto.org/static'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-MEDIA_URL = 'https://tgshop.hopto.org/media'
+MEDIA_URL = 'https://tgshop.hopto.org/media/'
 
-MEDIA_ROOT = '/var/www/tgshop.hopto.org/media/'
+MEDIA_ROOT = '/var/www/tgshop.hopto.org/media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
