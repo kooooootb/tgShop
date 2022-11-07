@@ -11,7 +11,7 @@ Vue.use(Router);
 let router = new Router({
     routes: [
         {
-            path: '',
+            path: '/',
             name: 'main',
             component: vMainMenu
 
