@@ -7,12 +7,12 @@
         :popupTitle="cart_item_data.name"
         @closePopup="closeInfoPopup"
     >
-      <img class="v-catalog-item-popup__image" src="" alt="img">
+      <img class="v-catalog-item-popup__image" :src="cart_item_data.image" alt="img">
       <p class="v-catalog-item-popup__name">{{cart_item_data.name}}</p>
       <p class="v-catalog-item-popup__price">Price: {{cart_item_data.price}}</p>
       <p class="v-catalog-item-popup__in-stocks">In stocks: {{cart_item_data.in_stock}}</p>
     </v-popup>
-    <img class="v-cart-item-image" src="" alt="img">
+    <img class="v-cart-item-image" :src="cart_item_data.image" alt="img">
     <div class="v-cart-item-info">
       <p class="v-cart-item-name">{{cart_item_data.name}}</p>
       <p class="v-cart-item-price">Price: {{cart_item_data.price}}</p>
@@ -68,6 +68,7 @@ export default {
 
 <style lang="scss">
 .v-cart-item{
+  background-color: #ffffff;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;

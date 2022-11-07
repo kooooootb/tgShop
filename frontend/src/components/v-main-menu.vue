@@ -30,6 +30,7 @@ export default {
 
 <style lang="scss">
   .v-main-menu{
+    background-color: #ffffff;
     max-width: 900px;
     margin: 0 auto;
     &__trainers{
