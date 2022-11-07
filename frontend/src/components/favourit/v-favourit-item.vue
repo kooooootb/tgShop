@@ -7,19 +7,26 @@
         :popupTitle="favourit_item_data.name"
         @closePopup="closeInfoPopup"
     >
-      <img class="v-catalog-item-popup__image" :src="favourit_item_data.image" alt="img">
-      <p class="v-catalog-item-popup__name">{{favourit_item_data.name}}</p>
-      <p class="v-catalog-item-popup__price">Price: {{favourit_item_data.price}}</p>
-      <p class="v-catalog-item-popup__in-stocks">In stocks: {{favourit_item_data.in_stock}}</p>
+      <div class="v-catalog-items-popup-image">
+        <img class="v-catalog-item-popup__image" :src="favourit_item_data.image_url" alt="img">
+      </div>
+      <div class="v-catalog-item-popup-content">
+        <p class="v-catalog-item-popup__name">{{favourit_item_data.name}}</p>
+        <p class="v-catalog-item-popup__price">Price: {{favourit_item_data.price}}</p>
+        <p class="v-catalog-item-popup__in-stocks">In stocks: {{favourit_item_data.in_stock}}</p>
+      </div>
     </v-popup>
-    <img class="v-favourit-item-image" :src="favourit_item_data.image" alt="img">
+    <div class="v-favourit-items-image">
+      <img class="v-favourit-items__image" :src="favourit_item_data.image_url" alt="img">
+    </div>
     <div class="v-favourit-item-info">
       <p class="v-favourit-item-name">{{favourit_item_data.name}}</p>
       <p class="v-favourit-item-price">Price: {{favourit_item_data.price}}</p>
       <p class="v-favourit-item-in-stocks">In stocks: {{favourit_item_data.in_stock}}</p>
+      <button @click="deleteFromFavourit">Delete</button>
+      <button class="v-catalog-item__show-info " @click="ShowPopupInfo">Show</button>
     </div>
-    <button @click="deleteFromFavourit">Delete</button>
-    <button class="v-catalog-item__show-info " @click="ShowPopupInfo">Show</button>
+
 
   </div>
 </template>
@@ -63,16 +70,27 @@ export default {
 
 <style lang="scss">
 .v-favourit-item{
-  background-color: #ffffff;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+  flex-basis: 25%;
   box-shadow: 0 0 8px 0 #2c3e50;
   padding: $padding*2;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
   margin-bottom: $margin*2;
-  &__image{
-    max-width: 50px;
+
+  .v-favourit-items {
+    flex-basis: 25%;
+    box-shadow: 0 0 8px 0 #2c3e50;
+    padding: $padding*2;
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin-bottom: $margin*2;
+    height: 30%;
+    &__image{
+      max-width: 100%;
+    }
   }
 
 }
