@@ -145,3 +145,5 @@ REST_FRAMEWORK = {
  }
 
 LOGIN_URL = '/login/'
+
+X_FRAME_OPTIONS = 'ALLOW-FROM https://web.telegram.org/'
