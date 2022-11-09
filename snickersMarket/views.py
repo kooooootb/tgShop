@@ -28,7 +28,7 @@ def index_view(request):
     return render(request, template_html)
 
 
-
+@login_required
 @api_view(['GET'])
 def products_api(request):
     """Get list of all products"""
@@ -36,7 +36,7 @@ def products_api(request):
         user_id = request.query_params.get('user_id')
 
         if user_id is None:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
 
         if user_id != request.user.username:
             logout(request)
