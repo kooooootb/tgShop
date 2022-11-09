@@ -35,11 +35,17 @@ export default {
   },
   methods: {
     ...mapActions([
-      'DELETE_FROM_FAVOURIT'
+      'DELETE_FROM_FAVOURIT',
+        'GET_PRODUCTS_FROM_API_FAVOURIT'
     ]),
     deleteFromFavourit(index){
       this.DELETE_FROM_FAVOURIT(index);
     }
+  },
+  mounted() {
+
+    this.GET_PRODUCTS_FROM_API_FAVOURIT();//{userid});
+    // console.log(window.Telegram.WebApp.initDataUnsafe.user.id);
   }
 
 }

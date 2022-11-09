@@ -20,8 +20,8 @@
 </template>
 
 <script>
-// let tg = window.Telegram.WebApp;
-// let userid = tg.initDataUnsafe.user.id;
+let tg = window.Telegram.WebApp;
+let userid = tg.initDataUnsafe.user.id;
 
 import vCatalogItem from "./v-catalog-item"
 import {mapActions, mapGetters} from "vuex";
@@ -61,8 +61,8 @@ import {mapActions, mapGetters} from "vuex";
     },
     mounted() {
 
-      this.GET_PRODUCTS_FROM_API(window.Telegram.WebApp.initDataUnsafe.user.id);//{userid});
-      console.log(window.Telegram.WebApp.initDataUnsafe.user.id);
+      this.GET_PRODUCTS_FROM_API(userid);
+      // console.log(window.Telegram.WebApp.initDataUnsafe.user.id);
     }
   }
 </script>
