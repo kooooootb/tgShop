@@ -12,7 +12,7 @@ from django.conf import settings
 from django.core.exceptions import FieldError
 
 from .models import Product
-from .serializers import ProductSerializer, BagElementSerializer
+from .serializers import ProductSerializer
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -157,7 +157,7 @@ def create_product_api(request):
 @api_view(['POST'])
 def add_bag_api(request):
     if request.method == 'POST':
-        serializer = BagElementSerializer(data=request.data)
+        serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)
