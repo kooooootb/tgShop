@@ -87,7 +87,7 @@ def bag_api(request):
         user = request.user
 
         bag = user.buyer.bag.all()
-        serializer = BagElementSerializer(bag, many=True)
+        serializer = ProductSerializer(bag, many=True)
         return Response(serializer.data)
 
 
