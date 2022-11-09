@@ -164,6 +164,16 @@ def create_product_api(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['POST'])
+def add_bag_api(request):
+    if request.method == 'POST':
+        serializer = BagElementSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 # @login_required
 # @api_view(['GET'])
 # def can_edit_api(request):

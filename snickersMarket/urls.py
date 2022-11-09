@@ -13,8 +13,9 @@ urlpatterns = [
     # Views for api requests
     path('api/products/', views.products_api, name='api_index'),  # get all products
     path('api/<int:pk>/', views.product_detail_api, name='api_detail'),  # get information of single product
-    path('bag/api/', views.bag_api, name='bag'),  # get user's bag
-    path('edit/api/create_product/', views.create_product_api, name='create_product'),  # create product
+    path('api/bag/', views.bag_api, name='bag'),  # get user's bag
+    path('api/edit/create_product/', views.create_product_api, name='create_product'),  # create product
+
     # path('edit/api/can_edit', views.can_edit_api, name='can_edit'),  # check if user can edit product list
 
     # Get all entries from db
