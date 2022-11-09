@@ -52,7 +52,7 @@ import {mapActions, mapGetters} from "vuex";
 
       ]),
       AddToCart(data){
-        this.ADD_TO_CART(data)
+        this.POST_ADD_TO_CART(data, tg.initDataUnsafe.user.id)
       },
       AddToFavourit(data){
         this.ADD_TO_FAVOURIT(data)
@@ -61,7 +61,7 @@ import {mapActions, mapGetters} from "vuex";
     },
     mounted() {
 
-      this.GET_PRODUCTS_FROM_API();
+      this.GET_PRODUCTS_FROM_API(tg.initDataUnsafe.user.id);
       console.log("from catalog: " + tg.initDataUnsafe.user.id);
       // console.log(window.Telegram.WebApp.initDataUnsafe.user.id);
     }

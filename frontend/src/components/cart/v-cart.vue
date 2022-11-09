@@ -17,6 +17,8 @@
 import VCartItem from './v-cart-item'
 import {mapActions} from "vuex";
 
+let tg = window.Telegram.WebApp;
+
 export default {
     name: "v-cart",
     components:{
@@ -44,7 +46,7 @@ export default {
     },
     mounted() {
 
-      this.GET_PRODUCTS_FROM_API_CART();//{userid});
+      this.GET_PRODUCTS_FROM_API_CART(tg.initDataUnsafe.user.id);//{userid});
       // console.log(window.Telegram.WebApp.initDataUnsafe.user.id);
     }
 

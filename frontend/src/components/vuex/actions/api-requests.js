@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-    GET_PRODUCTS_FROM_API({commit}) {
-        return axios('https://tgshop.hopto.org/api/products/?user_id=777', {
+    GET_PRODUCTS_FROM_API({commit}, user_id) {
+        return axios('https://tgshop.hopto.org/api/products/?user_id=' + user_id, {
 
             method: "GET"
         })
@@ -15,8 +15,8 @@ export default {
                 return error;
             })
     },
-    GET_PRODUCTS_FROM_API_CART({commit}){
-        return axios('http://localhost:3000/cart/', {
+    GET_PRODUCTS_FROM_API_CART({commit}, user_id){
+        return axios('https://tgshop.hopto.org/api/bag/?user_id=' + user_id, {
 
             method: "GET"
         })
@@ -29,8 +29,8 @@ export default {
                 return error;
             })
     },
-    GET_PRODUCTS_FROM_API_FAVOURIT({commit}){
-        return axios('http://localhost:3000/favourit/', {
+    GET_PRODUCTS_FROM_API_FAVOURIT({commit}, user_id){
+        return axios('https://tgshop.hopto.org/api/favourites/?user_id=' + user_id, {
 
             method: "GET"
         })
