@@ -11,7 +11,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from django.conf import settings
 from django.core.exceptions import FieldError
 
-from .models import Product, BagElement
+from .models import Product
 from .serializers import ProductSerializer, BagElementSerializer
 
 from rest_framework.decorators import api_view
@@ -24,31 +24,7 @@ from urllib.parse import urlparse, parse_qs  # for login api
 
 def index_view(request):
     """View for home page, showing all products"""
-    # template_html = 'snickersMarket/game.html'
     template_html = 'index.html'
-    can_edit = int(request.user.has_perm('snickersMarket.add_product'))
-    return render(request, template_html, {'is_editor': can_edit})
-
-
-def detail_view(request, pk):
-    """View for detail information about single product"""
-    template_html = 'snickersMarket/detail.html'
-    product = Product.objects.get(pk=pk)
-
-    return render(request, template_html, {'product': product})
-
-
-def bag_view(request):
-    """View for user's bag"""
-    template_html = 'snickersMarket/bag.html'
-    return render(request, template_html)
-
-
-@staff_member_required
-def edit_view(request):
-    """View for creating new objects"""
-    template_html = 'snickersMarket/edit.html'
-
     return render(request, template_html)
 
 
@@ -109,8 +85,21 @@ def bag_api(request):
     """Get user's bag in serializer"""
     if request.method == 'GET':
         user = request.user
-        bag = user.bagelement_set.all()
+
+        bag = user.buyer.bag.all()
         serializer = BagElementSerializer(bag, many=True)
+        return Response(serializer.data)
+
+
+@login_required
+@api_view(['GET'])
+def favourites_api(request):
+    """Get user's favourite products in serializer"""
+    if request.method == 'GET':
+        user = request.user
+
+        favourites = user.buyer.favourites.all()
+        serializer = ProductSerializer(favourites, many=True)
         return Response(serializer.data)
 
 
@@ -164,10 +153,22 @@ def create_product_api(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@login_required
 @api_view(['POST'])
 def add_bag_api(request):
     if request.method == 'POST':
         serializer = BagElementSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@login_required
+@api_view(['POST'])
+def add_favourite_api(request):
+    if request.method == 'POST':
+        serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)
