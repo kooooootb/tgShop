@@ -3,7 +3,6 @@
     { "id": 1, "title": "json-server", "author": "typicode" }
   ],
   "products":
-
   [
     {
       "id": 319,
@@ -29,6 +28,42 @@
       "price": 1231,
       "image_url": "https://tgshop.hopto.org/media/images/photo_2022-11-07_18-57-35.jpg"
     },
+    {
+      "id": 322,
+      "name": "Alexander McQueen",
+      "description": "",
+      "in_stock": 11,
+      "price": 123,
+      "image_url": "https://tgshop.hopto.org/media/images/photo_2022-11-07_18-58-09.jpg"
+    },
+    {
+      "id": 323,
+      "name": "CDG PLAY × Converse Chuck Taylor All Star 1970s High",
+      "description": "",
+      "in_stock": 123,
+      "price": 123,
+      "image_url": "https://tgshop.hopto.org/media/images/photo_2022-11-07_18-58-57.jpg"
+    }
+  ],
+  "favourit": [
+    {
+      "id": 320,
+      "name": "adidas Ultraboost 4.0 DNA",
+      "description": "",
+      "in_stock": 11,
+      "price": 213,
+      "image_url": "https://tgshop.hopto.org/media/images/photo_2022-11-07_18-57-21.jpg"
+    },
+    {
+      "id": 321,
+      "name": "New Balance 550",
+      "description": "",
+      "in_stock": 123,
+      "price": 1231,
+      "image_url": "https://tgshop.hopto.org/media/images/photo_2022-11-07_18-57-35.jpg"
+    }
+  ],
+  "cart": [
     {
       "id": 322,
       "name": "Alexander McQueen",

@@ -2,6 +2,12 @@ export default {
     SET_PRODUCTS_TO_STATE: (state, products) => {
         state.products = products;
     },
+    SET_PRODUCTS_TO_CART: (state, cart) => {
+        state.cart = cart;
+    },
+    SET_PRODUCTS_TO_FAVOURIT: (state, favourit) => {
+        state.favourit = favourit;
+    },
     SET_CART: (state, product) => {
         if (state.cart.length) {
             let isProductExist = false;
