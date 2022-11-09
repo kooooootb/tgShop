@@ -28,7 +28,7 @@ def index_view(request):
     return render(request, template_html)
 
 
-@login_required
+
 @api_view(['GET'])
 def products_api(request):
     """Get list of all products"""
