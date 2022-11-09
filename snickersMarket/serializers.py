@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, BagElement
+from .models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -13,11 +13,3 @@ class ProductSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         image_url = product.image.url
         return request.build_absolute_uri(image_url)
-
-
-class BagElementSerializer(serializers.ModelSerializer):
-    product = serializers.SlugRelatedField(queryset=Product.objects.all(), slug_field='id')
-
-    class Meta:
-        model = BagElement
-        fields = ('id', 'product', 'amount', 'color', 'size')
