@@ -7,7 +7,14 @@ export default {
 
 
     POST_ADD_TO_CART({commit}, product, user_id) {
-        axios.post('https://tgshop.hopto.org/api/add_bag/?user_id=' + user_id,product)
+        axios({
+            method: "POST",
+            url: 'https://tgshop.hopto.org/api/add_bag/?user_id=' + user_id,
+            data: product,
+            headers: {
+                "content-type": "application/json"
+            }
+        })
             .then((user_id) => {
                 commit('SET_PRODUCTS_TO_CART', user_id);
         })
