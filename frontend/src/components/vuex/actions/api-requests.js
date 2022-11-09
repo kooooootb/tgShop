@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-    GET_PRODUCTS_FROM_API({commit}) {
-        return axios('https://tgshop.hopto.org/api/products/?user_id=777', {
+    GET_PRODUCTS_FROM_API({commit}, user_id) {
+        return axios('https://tgshop.hopto.org/api/products/?user_id=' + user_id, {
 
             method: "GET"
         })
