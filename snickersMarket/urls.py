@@ -6,16 +6,15 @@ app_name = 'snickersMarket'
 urlpatterns = [
     # Views for loading webpages to show in browser
     path('', views.index_view, name='index'),  # page for all products ( catalogue )
-    path('<int:pk>/', views.detail_view, name='detail'),  # page for detail view for single product
-    path('bag/', views.bag_view, name='bag'),  # page for user's bag
-    path('edit/', views.edit_view, name='create'),  # page for creating new objects
 
     # Views for api requests
     path('api/products/', views.products_api, name='api_index'),  # get all products
     path('api/<int:pk>/', views.product_detail_api, name='api_detail'),  # get information of single product
     path('api/bag/', views.bag_api, name='bag'),  # get user's bag
+    path('api/favourites/', views.favourites_api, name='favourites'),  # get user's favourite products
     path('api/edit/create_product/', views.create_product_api, name='create_product'),  # create product
-    path('api/add_bag', views.add_bag_api, name='add_bag'),  # create new bag element
+    path('api/add_bag/', views.add_bag_api, name='add_bag'),  # create new bag element
+    path('api/add_favourites/', views.add_favourite_api, name='add_favourite'),  # add favourite product
 
     # path('edit/api/can_edit', views.can_edit_api, name='can_edit'),  # check if user can edit product list
 

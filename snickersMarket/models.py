@@ -14,8 +14,6 @@ class Product(models.Model):
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=100, blank=True)
 
-    in_stock = models.IntegerField()
-    pre_order = models.IntegerField(default=0)
     price = models.IntegerField()
 
     color = models.CharField(max_length=100)
@@ -26,15 +24,6 @@ class Product(models.Model):
         return f'{self.name}'
 
 
-# single user may have several bagelements or don't have them at all
-# every bagelement represents products in user's bag of single type
-class BagElement(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    amount = models.IntegerField(default=0)
-    color = models.CharField(default='', max_length=15)
-    size = models.CharField(default='', max_length=5)
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f'\"{self.product}\": amount={self.amount} size={self.size} color={self.color}'
+class Buyer(models.Model):
+    favourites = models.ManyToManyField(Product, related_name='favourites+')
+    bag = models.ManyToManyField(Product, related_name='bag+')
