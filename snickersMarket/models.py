@@ -20,9 +20,6 @@ class Product(models.Model):
 
     image = models.ImageField(upload_to='images/')
 
-    favourite_users = models.ManyToManyField(User)
-    bag_users = models.ManyToManyField(User)
-
     def __str__(self):
         return f'{self.name}'
 
