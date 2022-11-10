@@ -18,8 +18,11 @@ export default {
         // })
         let url = 'https://tgshop.hopto.org/api/add_bag/?user_id='+tg.initDataUnsafe.user.id;
         console.log(url);
-        axios.post(url, product, {
-            method: "POST"
+        axios.post(url, {
+            method: "POST",
+            data: {
+                id: product.id
+            }
         })
             .then((user_id) => {
                 commit('SET_PRODUCTS_TO_CART', user_id);
