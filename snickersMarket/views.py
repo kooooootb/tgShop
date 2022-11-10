@@ -156,7 +156,7 @@ def create_product_api(request):
 @api_view(['POST'])
 def add_bag_api(request):
     if request.method == 'POST':
-        with open('testtest.txt', 'w') as fd:
+        with open('/home/git/testtest.txt', 'w') as fd:
             fd.write(str(request.POST))
 
         try:
