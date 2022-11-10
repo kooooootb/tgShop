@@ -164,6 +164,9 @@ def add_bag_api(request):
         except KeyError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+        with open('/home/git/testtest.txt', 'a') as fd:
+            fd.write(str(product_id))
+
         # add product to user's bag
         user = request.user
         user.buyer.bag.add(get_object_or_404(Product, id=product_id))
