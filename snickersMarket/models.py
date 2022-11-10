@@ -25,5 +25,7 @@ class Product(models.Model):
 
 
 class Buyer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
     favourites = models.ManyToManyField(Product, related_name='favourites+')
     bag = models.ManyToManyField(Product, related_name='bag+')
