@@ -15,7 +15,9 @@ export default {
         //         "content-type": "application/json"
         //     }
         // })
-        axios.post('https://tgshop.hopto.org/api/add_bag/?user_id=' + user_id, product, {
+        let url = 'https://tgshop.hopto.org/api/add_bag/?user_id='+user_id;
+        console.log(url);
+        axios.post(url, product, {
             method: "POST"
         })
             .then((user_id) => {
