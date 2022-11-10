@@ -6,7 +6,8 @@ axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 export default {
 
 
-    POST_ADD_TO_CART({commit}, {product, user_id}) {
+    POST_ADD_TO_CART({commit}, product) {
+        let tg = window.Telegram.WebApp;
         // axios({
         //     method: "POST",
         //     url: 'https://tgshop.hopto.org/api/add_bag/?user_id=' + user_id,
@@ -15,7 +16,7 @@ export default {
         //         "content-type": "application/json"
         //     }
         // })
-        let url = 'https://tgshop.hopto.org/api/add_bag/?user_id='+user_id;
+        let url = 'https://tgshop.hopto.org/api/add_bag/?user_id='+tg.initDataUnsafe.user.id;
         console.log(url);
         axios.post(url, product, {
             method: "POST"
