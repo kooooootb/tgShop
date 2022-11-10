@@ -6,7 +6,7 @@ axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 export default {
 
 
-    POST_ADD_TO_CART({commit}, product, user_id) {
+    POST_ADD_TO_CART({commit}, {product, user_id}) {
         // axios({
         //     method: "POST",
         //     url: 'https://tgshop.hopto.org/api/add_bag/?user_id=' + user_id,
