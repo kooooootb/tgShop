@@ -7,17 +7,20 @@ export default {
 
 
     POST_ADD_TO_CART({commit}, product, user_id) {
-        axios({
-            method: "POST",
-            url: 'https://tgshop.hopto.org/api/add_bag/?user_id=' + user_id,
-            data: product,
-            headers: {
-                "content-type": "application/json"
-            }
+        // axios({
+        //     method: "POST",
+        //     url: 'https://tgshop.hopto.org/api/add_bag/?user_id=' + user_id,
+        //     data: product,
+        //     headers: {
+        //         "content-type": "application/json"
+        //     }
+        // })
+        axios.post('https://tgshop.hopto.org/api/add_bag/?user_id=' + user_id, product, {
+            method: "POST"
         })
             .then((user_id) => {
                 commit('SET_PRODUCTS_TO_CART', user_id);
-        })
+            })
             .catch((error) => {
                 console.error("There was an error!", error);
             });
