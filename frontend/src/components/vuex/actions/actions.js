@@ -20,9 +20,7 @@ export default {
         console.log(url);
         axios.post(url, {
             method: "POST",
-            data: {
-                id: product.id
-            }
+            id: product.id
         })
             .then((user_id) => {
                 commit('SET_PRODUCTS_TO_CART', user_id);
