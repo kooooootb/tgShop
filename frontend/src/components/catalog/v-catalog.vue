@@ -53,7 +53,7 @@ import {mapActions, mapGetters} from "vuex";
 
       ]),
       AddToCart(data){
-        this.POST_ADD_TO_CART({product: data, user_id: tg.initDataUnsafe.user.id})
+        this.POST_ADD_TO_CART(data)
       },
       AddToFavourit(data){
         this.ADD_TO_FAVOURIT(data)
