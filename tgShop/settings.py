@@ -146,4 +146,7 @@ REST_FRAMEWORK = {
 
 LOGIN_URL = '/login/'
 
-X_FRAME_OPTIONS = 'ALLOW-FROM https://web.telegram.org/'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+SESSION_COOKIE_SAMESITE = 'None'  # As a string
+SESSION_COOKIE_SECURE = True
