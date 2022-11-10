@@ -160,7 +160,7 @@ def add_bag_api(request):
             fd.write(str(request.data))
 
         try:
-            product_id = request.POST['id']
+            product_id = request.data['id']
         except KeyError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
