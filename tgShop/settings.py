@@ -54,7 +54,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'tgShop.urls'
@@ -145,8 +144,6 @@ REST_FRAMEWORK = {
  }
 
 LOGIN_URL = '/login/'
-
-X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 SESSION_COOKIE_SAMESITE = 'None'  # As a string
 SESSION_COOKIE_SECURE = True
