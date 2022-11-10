@@ -159,8 +159,7 @@ def add_bag_api(request):
         try:
             product_id = request.POST['id']
         except KeyError:
-            raise Exception(f's{request.POST}e')
-            # return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
         # add product to user's bag
         user = request.user
