@@ -157,12 +157,12 @@ def create_product_api(request):
 def add_bag_api(request):
     if request.method == 'POST':
         with open('/home/git/testtest.txt', 'w') as fd:
-            fd.write(str(request.POST))
+            fd.write(str(request))
 
         try:
             product_id = request.POST['id']
         except KeyError:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
         # add product to user's bag
         user = request.user
