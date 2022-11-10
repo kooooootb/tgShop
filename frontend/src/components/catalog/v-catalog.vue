@@ -47,7 +47,8 @@ import {mapActions, mapGetters} from "vuex";
       ...mapActions([
         'GET_PRODUCTS_FROM_API',
           'ADD_TO_CART',
-          'ADD_TO_FAVOURIT'
+          'ADD_TO_FAVOURIT',
+          'POST_ADD_TO_CART'
 
 
       ]),
