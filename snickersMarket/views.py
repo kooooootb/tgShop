@@ -156,9 +156,18 @@ def create_product_api(request):
 
 
 @login_required
-@api_view(['POST', 'DELETE'])
-def add_bag_api(request):
-    if request.method == 'POST':
+@api_view(['GET', 'POST', 'DELETE'])
+def bag_api(request):
+    if request.method == 'GET':
+        """Get request's user's bag and serialize it"""
+        user = request.user
+
+        bag = user.buyer.bag.all()
+        serializer = ProductSerializer(bag, many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        """Add product using product's id from data['id'] to bag of user from request"""
         try:
             product_id = request.data['id']
         except KeyError:
@@ -170,7 +179,9 @@ def add_bag_api(request):
         user.buyer.bag.add(product)
 
         return Response(status=status.HTTP_200_OK)
+
     elif request.method == 'DELETE':
+        """Delete product from user's bag"""
         try:
             product_id = request.data['id']
         except KeyError:
