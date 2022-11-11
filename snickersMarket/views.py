@@ -160,7 +160,7 @@ def favourites_api(request):
         user = request.user
         product = get_object_or_404(Product, id=product_id)
 
-        if user.buyer.favourites.objects.filter(pk=product.pk):
+        if user.buyer.favourites.filter(pk=product.pk):
             user.buyer.favourites.remove(product)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
