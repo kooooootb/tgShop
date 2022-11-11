@@ -13,8 +13,8 @@ urlpatterns = [
     path('api/bag/', views.bag_api, name='bag'),  # bag apis
     path('api/favourites/', views.favourites_api, name='favourites'),  # favourites apis
     path('api/edit/create_product/', views.create_product_api, name='create_product'),  # create product
-    path('api/add_bag/', views.bag_api, name='bag_obsolete'),  # TODO delete it
-    path('api/add_favourites/', views.add_favourite_api, name='add_favourite'),  # TODO delete it
+    path('api/delete_bag/', views.delete_bag_api, name='delete_bag'),
+    path('api/add_favourites/', views.add_favourite_api, name='delete_favourite'),
 
     # path('edit/api/can_edit', views.can_edit_api, name='can_edit'),  # check if user can edit product list
 
