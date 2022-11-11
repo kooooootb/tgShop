@@ -21,8 +21,9 @@ export default {
             id: product.id,
             method: "POST"
         })
-            .then((user_id) => {
-                commit('SET_PRODUCTS_TO_CART', user_id);
+            .then((products) => {
+                commit('SET_PRODUCTS_TO_CART', products.data);
+                return products;
             })
             .catch((error) => {
                 console.error("There was an error!", error);
