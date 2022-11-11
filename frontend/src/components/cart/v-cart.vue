@@ -7,7 +7,7 @@
         v-for="item in CART"
         :key="item.id"
         :cart_item_data="item"
-        @deleteFromCart="deleteFromCart(index)"
+        @deleteFromCart="deleteFromCart(item.id)"
       />
     </div>
   </div>

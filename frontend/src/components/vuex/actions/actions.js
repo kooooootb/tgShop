@@ -26,7 +26,7 @@ export default {
         let url = 'https://tgshop.hopto.org/api/bag/?user_id='+tg.initDataUnsafe.user.id;
         axios.post(url, {
             id: product.id,
-            method: "POST"
+            method: "DELETE"
         })
             .then(() => {
                 commit('GET_PRODUCTS_FROM_API_CART');
