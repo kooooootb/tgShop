@@ -1,10 +1,10 @@
 <template>
   <div class="v-main-wrapper">
 
-    <!--    <keep-alive>-->
-<!--      <router-view>-->
-<!--      </router-view>-->
-<!--    </keep-alive>-->
+        <keep-alive>
+          <router-view>
+          </router-view>
+        </keep-alive>
 <!--    <v-main-menu/>-->
     <div class="v-main-wrapper__helper">
       <p>. . .</p>
