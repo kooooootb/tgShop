@@ -7,7 +7,7 @@
         v-for="item in CART"
         :key="item.id"
         :cart_item_data="item"
-        @deleteFromCart="deleteFromCart(index)"
+        @deleteFromCart="deleteFromCart(item.id)"
       />
     </div>
   </div>
@@ -17,7 +17,7 @@
 import VCartItem from './v-cart-item'
 import {mapActions, mapGetters} from "vuex";
 
-let tg = window.Telegram.WebApp;
+
 
 export default {
     name: "v-cart",
@@ -53,8 +53,7 @@ export default {
     },
     mounted() {
 
-      this.GET_PRODUCTS_FROM_API_CART(tg.initDataUnsafe.user.id);//{userid});
-      // console.log(window.Telegram.WebApp.initDataUnsafe.user.id);
+      this.GET_PRODUCTS_FROM_API_CART();
     }
 
   }

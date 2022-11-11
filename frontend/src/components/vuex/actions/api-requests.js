@@ -1,8 +1,9 @@
 import axios from "axios";
 
 export default {
-    GET_PRODUCTS_FROM_API({commit}, user_id) {
-        return axios('https://tgshop.hopto.org/api/products/?user_id=' + user_id, {
+    GET_PRODUCTS_FROM_API({commit}) {
+        let tg = window.Telegram.WebApp;
+        return axios('https://tgshop.hopto.org/api/products/?user_id=' + tg.initDataUnsafe.user.id, {
 
             method: "GET"
         })
@@ -15,8 +16,9 @@ export default {
                 return error;
             })
     },
-    GET_PRODUCTS_FROM_API_CART({commit}, user_id){
-        return axios('https://tgshop.hopto.org/api/bag/?user_id=' + user_id, {
+    GET_PRODUCTS_FROM_API_CART({commit}){
+        let tg = window.Telegram.WebApp;
+        return axios('https://tgshop.hopto.org/api/bag/?user_id=' + tg.initDataUnsafe.user.id, {
 
             method: "GET"
         })

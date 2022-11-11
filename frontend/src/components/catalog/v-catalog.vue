@@ -20,8 +20,6 @@
 </template>
 
 <script>
-let tg = window.Telegram.WebApp;
-// let userid = tg.initDataUnsafe.user.id;
 
 import vCatalogItem from "./v-catalog-item"
 import {mapActions, mapGetters} from "vuex";
@@ -47,12 +45,14 @@ import {mapActions, mapGetters} from "vuex";
         'GET_PRODUCTS_FROM_API',
           'ADD_TO_CART',
           'ADD_TO_FAVOURIT',
-          'POST_ADD_TO_CART'
+          'POST_ADD_TO_CART',
+          'GET_PRODUCTS_FROM_API_CART'
 
 
       ]),
       AddToCart(data){
         this.POST_ADD_TO_CART(data)
+        this.GET_PRODUCTS_FROM_API_CART()
       },
       AddToFavourit(data){
         this.ADD_TO_FAVOURIT(data)
@@ -61,9 +61,7 @@ import {mapActions, mapGetters} from "vuex";
     },
     mounted() {
 
-      this.GET_PRODUCTS_FROM_API(tg.initDataUnsafe.user.id);
-      console.log("from catalog: " + tg.initDataUnsafe.user.id);
-      // console.log(window.Telegram.WebApp.initDataUnsafe.user.id);
+      this.GET_PRODUCTS_FROM_API();
     }
   }
 </script>
