@@ -28,7 +28,7 @@ except KeyError as e:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['tgShop.hopto.org', '127.0.0.1']
 
@@ -54,7 +54,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'tgShop.urls'
@@ -146,4 +145,5 @@ REST_FRAMEWORK = {
 
 LOGIN_URL = '/login/'
 
-X_FRAME_OPTIONS = 'ALLOW-FROM https://web.telegram.org/'
+SESSION_COOKIE_SAMESITE = 'None'  # As a string
+SESSION_COOKIE_SECURE = True

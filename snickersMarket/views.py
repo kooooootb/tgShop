@@ -11,7 +11,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from django.conf import settings
 from django.core.exceptions import FieldError
 
-from .models import Product
+from .models import Product, Buyer
 from .serializers import ProductSerializer
 
 from rest_framework.decorators import api_view
@@ -79,27 +79,91 @@ def logout_api(request):
 
 
 @login_required
-@api_view(['GET'])
+@api_view(['GET', 'POST', 'DELETE'])
 def bag_api(request):
-    """Get user's bag in serializer"""
     if request.method == 'GET':
+        """Get request's user's bag and serialize it"""
         user = request.user
 
         bag = user.buyer.bag.all()
         serializer = ProductSerializer(bag, many=True)
         return Response(serializer.data)
 
+    elif request.method == 'POST':
+        """Add product using product's id from data['id'] to bag of user from request"""
+        try:
+            product_id = request.data['id']
+        except KeyError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        # add product to user's bag
+        user = request.user
+        product = get_object_or_404(Product, id=product_id)
+        user.buyer.bag.add(product)
+
+        return Response(status=status.HTTP_200_OK)
+
+    elif request.method == 'DELETE':
+        """Delete product from user's bag"""
+        try:
+            product_id = request.data['id']
+        except KeyError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        # delete product from user's bag
+        user = request.user
+        product = get_object_or_404(Product, id=product_id)
+
+        if user.buyer.bag.objects.filter(pk=product.pk):
+            user.buyer.bag.remove(product)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response(status=status.HTTP_200_OK)
+
 
 @login_required
-@api_view(['GET'])
+@api_view(['GET', 'POST', 'DELETE'])
 def favourites_api(request):
-    """Get user's favourite products in serializer"""
     if request.method == 'GET':
+        """Get request's user's favourite products and serialize them"""
         user = request.user
 
         favourites = user.buyer.favourites.all()
         serializer = ProductSerializer(favourites, many=True)
         return Response(serializer.data)
+
+    elif request.method == 'POST':
+        """Add product using product's id from data['id'] to favourite products list of user from request"""
+        try:
+            product_id = request.data['id']
+        except KeyError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        # add product to user's bag
+        user = request.user
+        product = get_object_or_404(Product, id=product_id)
+        user.buyer.favourites.add(product)
+
+        return Response(status=status.HTTP_200_OK)
+
+    elif request.method == 'DELETE':
+        """Delete product from user's favourite products list"""
+        try:
+            product_id = request.data['id']
+        except KeyError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        # delete product from user's bag
+        user = request.user
+        product = get_object_or_404(Product, id=product_id)
+
+        if user.buyer.favourites.objects.filter(pk=product.pk):
+            user.buyer.favourites.remove(product)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response(status=status.HTTP_200_OK)
 
 
 def login_func(request, user_id):
@@ -110,6 +174,9 @@ def login_func(request, user_id):
     if user is None:
         user = User.objects.create_user(username=user_id, password='')
         user.save()
+
+        # connect user with buyer
+        Buyer.objects.create(user=user)
 
     # Log in user
     login(request, user)
@@ -144,17 +211,6 @@ def login_api(request):
 @api_view(['POST'])
 def create_product_api(request):
     """Create product using request"""
-    if request.method == 'POST':
-        serializer = ProductSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@login_required
-@api_view(['POST'])
-def add_bag_api(request):
     if request.method == 'POST':
         serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
