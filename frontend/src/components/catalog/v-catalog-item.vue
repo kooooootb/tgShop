@@ -39,6 +39,7 @@
 
 <script>
 import vPopup from "../popup/v-popup"
+let tg = window.Telegram.WebApp;
 
 export default {
   name: "v-catalog-item",
@@ -65,7 +66,7 @@ export default {
       this.$emit('AddToCart',this.product_data)
     },
     AddToFavourit(){
-      this.$emit('AddToFavourit',this.product_data)
+      this.$emit('AddToFavourit',this.product_data, tg.initDataUnsafe.user.id)
     },
     ShowPopupInfo(){
       this.isInfoPopupVisible = true;
