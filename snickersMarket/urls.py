@@ -10,11 +10,11 @@ urlpatterns = [
     # Views for api requests
     path('api/products/', views.products_api, name='api_index'),  # get all products
     path('api/<int:pk>/', views.product_detail_api, name='api_detail'),  # get information of single product
-    path('api/bag/', views.bag_api, name='bag'),  # get user's bag
-    path('api/favourites/', views.favourites_api, name='favourites'),  # get user's favourite products
+    path('api/bag/', views.bag_api, name='bag'),  # bag apis
+    path('api/favourites/', views.favourites_api, name='favourites'),  # favourites apis
     path('api/edit/create_product/', views.create_product_api, name='create_product'),  # create product
-    path('api/add_bag/', views.bag_api, name='add_bag'),  # bag apis
-    path('api/add_favourites/', views.add_favourite_api, name='add_favourite'),  # add favourite product
+    path('api/add_bag/', views.bag_api, name='bag_obsolete'),  # TODO delete it
+    path('api/add_favourites/', views.add_favourite_api, name='add_favourite'),  # TODO delete it
 
     # path('edit/api/can_edit', views.can_edit_api, name='can_edit'),  # check if user can edit product list
 
