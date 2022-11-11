@@ -99,7 +99,9 @@ def bag_api(request):
         # add product to user's bag
         user = request.user
         product = get_object_or_404(Product, id=product_id)
-        user.buyer.bag.add(product)
+
+        if not user.buyer.bag.filter(pk=product.pk).exists():
+            user.buyer.bag.add(product)
 
         return Response(status=status.HTTP_200_OK)
 
@@ -114,7 +116,7 @@ def bag_api(request):
         user = request.user
         product = get_object_or_404(Product, id=product_id)
 
-        if user.buyer.bag.objects.filter(pk=product.pk):
+        if user.buyer.bag.filter(pk=product.pk).exists():
             user.buyer.bag.remove(product)
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
