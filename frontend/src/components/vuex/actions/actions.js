@@ -7,23 +7,13 @@ export default {
 
     POST_ADD_TO_CART({commit}, product) {
         let tg = window.Telegram.WebApp;
-        // axios({
-        //     method: "POST",
-        //     url: 'https://tgshop.hopto.org/api/add_bag/?user_id=' + user_id,
-        //     data: product,
-        //     headers: {
-        //         "content-type": "application/json"
-        //     }
-        // })
         let url = 'https://tgshop.hopto.org/api/bag/?user_id='+tg.initDataUnsafe.user.id;
-        console.log(url);
         axios.post(url, {
             id: product.id,
             method: "POST"
         })
-            .then((products) => {
-                commit('SET_PRODUCTS_TO_CART', products.data);
-                return products;
+            .then(() => {
+                commit('GET_PRODUCTS_FROM_API_CART');
             })
             .catch((error) => {
                 console.error("There was an error!", error);
@@ -31,9 +21,20 @@ export default {
 
     },
 
-    DELETE_FROM_CART({commit}, index) {
-        commit('REMOVE_FROM_CART', index)
-    },
+    DELETE_FROM_CART({commit}, product) {
+        let tg = window.Telegram.WebApp;
+        let url = 'https://tgshop.hopto.org/api/bag/?user_id='+tg.initDataUnsafe.user.id;
+        axios.post(url, {
+            id: product.id,
+            method: "POST"
+        })
+            .then(() => {
+                commit('GET_PRODUCTS_FROM_API_CART');
+            })
+            .catch((error) => {
+                console.error("There was an error!", error);
+            });
+        },
     ADD_TO_FAVOURIT({commit}, product) {
         commit('SET_FAVOURIT', product)
     },
