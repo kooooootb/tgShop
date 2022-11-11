@@ -49,6 +49,8 @@ export default {
       ]),
       deleteFromCart(index){
         this.DELETE_FROM_CART(index);
+        this.GET_PRODUCTS_FROM_API_CART();
+
       }
     },
     mounted() {
