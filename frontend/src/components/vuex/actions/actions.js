@@ -23,10 +23,10 @@ export default {
 
     DELETE_FROM_CART({commit}, product) {
         let tg = window.Telegram.WebApp;
-        let url = 'https://tgshop.hopto.org/api/bag/?user_id='+tg.initDataUnsafe.user.id;
+        let url = 'https://tgshop.hopto.org/api/delete_bag/?user_id='+tg.initDataUnsafe.user.id;
         axios.post(url, {
             id: product.id,
-            method: "DELETE"
+            method: "POST"
         })
             .then(() => {
                 commit('GET_PRODUCTS_FROM_API_CART');
