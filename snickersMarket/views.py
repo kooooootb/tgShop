@@ -105,8 +105,15 @@ def bag_api(request):
 
         return Response(status=status.HTTP_200_OK)
 
-    elif request.method == 'DELETE':
+
+@login_required
+@api_view(['POST'])
+def delete_bag_api(request):
+    if request.method == 'POST':
         """Delete product from user's bag"""
+        with open('/home/git/test.txt', 'w') as fd:
+            fd.write(request.data)
+
         try:
             product_id = request.data['id']
         except KeyError:
