@@ -11,7 +11,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from django.conf import settings
 from django.core.exceptions import FieldError
 
-from .models import Product
+from .models import Product, Buyer
 from .serializers import ProductSerializer
 
 from rest_framework.decorators import api_view
@@ -111,6 +111,9 @@ def login_func(request, user_id):
         user = User.objects.create_user(username=user_id, password='')
         user.save()
 
+        # connect user with buyer
+        Buyer.objects.create(user=user)
+
     # Log in user
     login(request, user)
 
@@ -153,23 +156,34 @@ def create_product_api(request):
 
 
 @login_required
-@api_view(['POST'])
+@api_view(['POST', 'DELETE'])
 def add_bag_api(request):
     if request.method == 'POST':
-        with open('/home/git/testtest.txt', 'w') as fd:
-            fd.write(str(request.data))
-
         try:
             product_id = request.data['id']
         except KeyError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        with open('/home/git/testtest.txt', 'a') as fd:
-            fd.write(str(product_id))
-
         # add product to user's bag
         user = request.user
-        user.buyer.bag.add(get_object_or_404(Product, id=product_id))
+        product = get_object_or_404(Product, id=product_id)
+        user.buyer.bag.add(product)
+
+        return Response(status=status.HTTP_200_OK)
+    elif request.method == 'DELETE':
+        try:
+            product_id = request.data['id']
+        except KeyError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        # delete product from user's bag
+        user = request.user
+        product = get_object_or_404(Product, id=product_id)
+
+        if user.buyer.bag.objects.filter(pk=product.pk):
+            user.buyer.bag.remove(product)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
         return Response(status=status.HTTP_200_OK)
 
