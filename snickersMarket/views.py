@@ -112,7 +112,7 @@ def delete_bag_api(request):
     if request.method == 'POST':
         """Delete product from user's bag"""
         with open('/home/git/test.txt', 'w') as fd:
-            fd.write(request.data)
+            fd.write(str(request.data))
 
         try:
             product_id = request.data['id']
