@@ -4,7 +4,7 @@
     <p v-if="!cart_data.length">There are no products in cart...</p>
     <div class="v-cart-list">
       <v-cart-item
-        v-for="(item, index) in cart_data"
+        v-for="item in CART"
         :key="item.id"
         :cart_item_data="item"
         @deleteFromCart="deleteFromCart(index)"
@@ -15,7 +15,7 @@
 
 <script>
 import VCartItem from './v-cart-item'
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 let tg = window.Telegram.WebApp;
 
@@ -34,6 +34,13 @@ export default {
     },
     data(){
       return{}
+    },
+    computed: {
+      ...mapGetters([
+        'PRODUCTS',
+        'CART',
+        'FAVOURIT',
+      ]),
     },
     methods: {
       ...mapActions([

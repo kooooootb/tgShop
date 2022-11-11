@@ -33,7 +33,6 @@ import {mapActions, mapGetters} from "vuex";
     props: {},
     data(){
       return{
-
       }
     },
     computed: {
