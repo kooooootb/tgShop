@@ -10,6 +10,8 @@
           Add comments:
           <textarea name="comment" cols="39" rows="3"></textarea>
         </label>
+        <slot>
+        </slot>
       </div>
       <div class="v-list-of-products__footer">
         <button class="v-list-of-products__close" @click="closeListProducts">Close</button>
