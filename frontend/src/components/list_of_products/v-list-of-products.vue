@@ -5,8 +5,6 @@
         <span>Your products</span>
       </div>
       <div class="v-list-of-products__content">
-        <slot>
-        </slot>
       </div>
       <div class="v-list-of-products__footer">
         <button class="v-list-of-products__close" @click="closeListProducts">Close</button>
