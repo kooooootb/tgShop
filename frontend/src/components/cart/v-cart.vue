@@ -7,6 +7,11 @@
           v-if="isInfoListProductVisible"
           @closeListProducts="closeInfoListProducts"
       >
+        <p>Total: 99999</p>
+        <label>
+          Add comments:
+          <textarea name="comment" cols="39" rows="3"></textarea>
+        </label>
       </v-list-of-products>
       <v-cart-item
         v-for="item in CART"

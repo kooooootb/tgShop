@@ -5,7 +5,7 @@
         <span>Your products</span>
       </div>
       <div class="v-list-of-products__content">
-        <p>Total: {{cartTotal}}</p>
+        <p>Total: 20000</p>
         <label>
           Add comments:
           <textarea name="comment" cols="39" rows="3"></textarea>
@@ -28,29 +28,24 @@ import {mapActions} from "vuex";
 export default {
   name: "v-list-of-products",
   props:{
-    list_cart_data: {
-      type: Array,
-      default(){
-        return[]
-      }
-    }
+
   },
   data(){
     return {}
   },
   computed:{
 
-    cartTotal(){
-      let result = []
-      for( let item of this.list_cart_data){
-        result.push(item.price)
-      }
-      result = result.reduce(function (sum, el){
-        return sum + el;
-      })
-
-      return result;
-    }
+    // cartTotal(){
+    //   let result = []
+    //   for( let item of this.list_cart_data){
+    //     result.push(item.price)
+    //   }
+    //   result = result.reduce(function (sum, el){
+    //     return sum + el;
+    //   })
+    //
+    //   return result;
+    // }
   },
   methods: {
     ...mapActions([
@@ -69,7 +64,7 @@ export default {
         vm.closeListProducts()
       }
     })
-    this.GET_PRODUCTS_FROM_API_CART();
+    // this.GET_PRODUCTS_FROM_API_CART();
 
   }
 }
