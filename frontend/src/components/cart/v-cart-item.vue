@@ -23,10 +23,6 @@
       <p class="v-cart-item-name">{{cart_item_data.name}}</p>
       <p class="v-cart-item-price">Price: {{cart_item_data.price}}</p>
       <p class="v-cart-item-in-stocks">In stocks: {{cart_item_data.in_stock}}</p>
-      <div class="v-cart-item-quantity">
-        <p>Quantity:</p>
-        {{cart_item_data.quantity}}
-      </div>
       <button @click="deleteFromCart">Delete</button>
       <button class="v-catalog-item__show-info " @click="ShowPopupInfo">Show</button>
     </div>
@@ -57,6 +53,7 @@ export default {
   },
   computed:{},
   methods: {
+
     deleteFromCart(){
       this.$emit('deleteFromCart')
     },
@@ -68,7 +65,6 @@ export default {
     }
   },
   mounted() {
-    this.$set(this.cart_item_data, 'quantity', 1)
   }
 
 }

@@ -7,11 +7,6 @@
           v-if="isInfoListProductVisible"
           @closeListProducts="closeInfoListProducts"
       >
-        <p>Total: {{cartTotal}}</p>
-        <label>
-          Add comments:
-          <textarea name="comment" cols="40" rows="3"></textarea>
-        </label>
       </v-list-of-products>
       <v-cart-item
         v-for="item in CART"
@@ -55,18 +50,8 @@ export default {
         'PRODUCTS',
         'CART',
         'FAVOURIT',
-      ]),
-      cartTotal(){
-        let result = []
-        for( let item of this.cart_data){
-          result.push(item.price)
-        }
-        result = result.reduce(function (sum, el){
-          return sum + el;
-        })
+      ])
 
-        return result;
-      }
     },
     methods: {
       ...mapActions([
@@ -87,7 +72,6 @@ export default {
       }
     },
     mounted() {
-
       this.GET_PRODUCTS_FROM_API_CART();
     }
 

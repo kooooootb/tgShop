@@ -5,6 +5,11 @@
         <span>Your products</span>
       </div>
       <div class="v-list-of-products__content">
+        <p>Total: {{cartTotal}}</p>
+        <label>
+          Add comments:
+          <textarea name="comment" cols="39" rows="3"></textarea>
+        </label>
       </div>
       <div class="v-list-of-products__footer">
         <button class="v-list-of-products__close" @click="closeListProducts">Close</button>
@@ -16,15 +21,39 @@
 
 <script>
 
+import {mapActions} from "vuex";
+
 export default {
   name: "v-list-of-products",
   props:{
-
+    list_cart_data: {
+      type: Array,
+      default(){
+        return[]
+      }
+    }
   },
   data(){
     return {}
   },
+  computed:{
+
+    cartTotal(){
+      let result = []
+      for( let item of this.list_cart_data){
+        result.push(item.price)
+      }
+      result = result.reduce(function (sum, el){
+        return sum + el;
+      })
+
+      return result;
+    }
+  },
   methods: {
+    ...mapActions([
+      'GET_PRODUCTS_FROM_API_CART'
+    ]),
     closeListProducts(){
       this.$emit('closeListProducts')
     }
@@ -38,6 +67,8 @@ export default {
         vm.closeListProducts()
       }
     })
+    this.GET_PRODUCTS_FROM_API_CART();
+
   }
 }
 </script>
