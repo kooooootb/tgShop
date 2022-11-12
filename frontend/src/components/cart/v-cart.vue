@@ -15,7 +15,7 @@
         @deleteFromCart="deleteFromCart(item.id)"
       />
     </div>
-    <button class="v-cart__show-info " @click="showInfoListProducts">Show</button>
+    <button class="v-cart__show-info " @click="showInfoListProducts">Click to place an order</button>
   </div>
 </template>
 
@@ -24,6 +24,10 @@ import VCartItem from './v-cart-item'
 import VListOfProducts from "@/components/list_of_products/v-list-of-products";
 import {mapActions, mapGetters} from "vuex";
 let tg = window.Telegram.WebApp;
+//close page after clicked to main button
+tg.onEvent('mainButtonClicked', function(){
+  tg.close();
+});
 
 export default {
 
