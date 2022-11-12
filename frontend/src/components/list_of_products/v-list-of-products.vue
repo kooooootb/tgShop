@@ -114,8 +114,7 @@ export default {
     top: 10px;
   }
   &__content{
-    display: grid;
-    grid-template-columns: 4fr 5fr;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
