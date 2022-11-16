@@ -16,6 +16,9 @@ urlpatterns = [
     path('api/delete_bag/', views.delete_bag_api, name='delete_bag'),
     path('api/add_favourites/', views.add_favourite_api, name='delete_favourite'),
 
+    # payments
+    path('api/payment', views.payment_api, name='payment'),
+
     # path('edit/api/can_edit', views.can_edit_api, name='can_edit'),  # check if user can edit product list
 
     # Get all entries from db

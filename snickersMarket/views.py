@@ -21,6 +21,8 @@ from rest_framework import status, generics
 
 from urllib.parse import urlparse, parse_qs  # for login api
 
+import requests
+
 
 def index_view(request):
     """View for home page, showing all products"""
@@ -111,9 +113,6 @@ def bag_api(request):
 def delete_bag_api(request):
     if request.method == 'POST':
         """Delete product from user's bag"""
-        with open('/home/git/test.txt', 'w') as fd:
-            fd.write(str(request.data))
-
         try:
             product_id = request.data['id']
         except KeyError:
@@ -258,3 +257,47 @@ def entries_api(request, value_name):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
         return Response(all_entries)
+
+
+@login_required
+@api_view(['GET'])
+def payment_api(request):
+    if request.method == 'GET':
+        # get tokens
+        with open('../BOT_TG/config.py') as cf:
+            for line in cf:
+                if line.startswith('BOT_TOKEN'):
+                    bot_token = line.split()[-1]
+                if line.startswith('PAYMENTS_PROVIDER_TOKEN'):
+                    payment_token = line.split()[-1]
+
+        # get all objects (array of labeledPrice)
+        prices = []
+        user = request.user
+        products = user.buyer.bag.all()
+        for product in products:
+            prices += {
+                'label': product.name,
+                'amount': product.price * 100,
+            }
+
+        # get url for requesting link
+        url = f'https://api.telegram.org/bot{bot_token}/createInvoiceLink'
+
+        # get dictionary for requesting link
+        cil_json = {
+            'title': 'Order #',
+            'description': 'test description',
+            'provider_token': payment_token,
+            'currency': 'RUB',
+            'prices': prices,
+            'payload': {
+                'order': 1  # TODO make order id
+            }
+        }
+
+        request = requests.post(url=url, json=cil_json)
+
+        link = request.text.result
+
+        return Response(link)
