@@ -22,6 +22,7 @@ from rest_framework import status, generics
 from urllib.parse import urlparse, parse_qs  # for login api
 
 import requests
+import json
 
 
 def index_view(request):
@@ -296,13 +297,11 @@ def payment_api(request):
             }
         }
 
-        with open('/home/git/testInvoice.txt', 'w') as fd:
-            fd.write(f'url{str(url)}\njson{cil_json}')
-
         request = requests.post(url=url, json=cil_json)
+        request_dict = json.loads(request.text)
 
         try:
-            link = request.text['result']
+            link = request_dict['result']
         except KeyError:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
