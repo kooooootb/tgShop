@@ -32,6 +32,7 @@ export default {
             })
     },
     GET_PRODUCTS_FROM_API_FAVOURIT({commit}, user_id){
+
         return axios('https://tgshop.hopto.org/api/favourites/?user_id=' + user_id, {
 
             method: "GET"
@@ -46,8 +47,9 @@ export default {
             })
     },
 
-    GET_LINK_INVOICE({commit}, user_id){
-        return axios('https://tgshop.hopto.org/api/payment/?user_id=' + user_id, {
+    GET_LINK_INVOICE({commit}){
+        let tg = window.Telegram.WebApp;
+        return axios('https://tgshop.hopto.org/api/payment/?user_id=' + tg.initDataUnsafe.user.id, {
 
             method: "GET"
         })
