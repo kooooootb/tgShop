@@ -267,19 +267,19 @@ def payment_api(request):
         with open('/home/git/tgShop/work/BOT_TG/config.py') as cf:
             for line in cf:
                 if line.startswith('BOT_TOKEN'):
-                    bot_token = line.split()[-1]
+                    bot_token = line.split()[-1].replace('\'', '')
                 if line.startswith('PAYMENTS_PROVIDER_TOKEN'):
-                    payment_token = line.split()[-1]
+                    payment_token = line.split()[-1].replace('\'', '')
 
         # get all objects (array of labeledPrice)
         prices = []
         user = request.user
         products = user.buyer.bag.all()
         for product in products:
-            prices += {
+            prices.append({
                 'label': product.name,
                 'amount': product.price * 100,
-            }
+            })
 
         # get url for requesting link
         url = f'https://api.telegram.org/bot{bot_token}/createInvoiceLink'
@@ -296,11 +296,14 @@ def payment_api(request):
             }
         }
 
-        with open('/home/git/testInvoice.txt') as fd:
+        with open('/home/git/testInvoice.txt', 'w') as fd:
             fd.write(f'url{str(url)}\njson{cil_json}')
 
         request = requests.post(url=url, json=cil_json)
 
-        link = request.text
+        try:
+            link = request.text['result']
+        except KeyError:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
         return Response(link)
