@@ -298,6 +298,6 @@ def payment_api(request):
 
         request = requests.post(url=url, json=cil_json)
 
-        link = request.text.result
+        link = request.text
 
         return Response(link)
