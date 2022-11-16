@@ -44,6 +44,21 @@ export default {
                 console.log(error);
                 return error;
             })
+    },
+
+    GET_LINK_INVOICE({commit}, user_id){
+        return axios('https://tgshop.hopto.org/api/payment/?user_id=' + user_id, {
+
+            method: "GET"
+        })
+            .then((link) => {
+                commit('SET_LINK_TO_LINK', link.data);
+                return link;
+            })
+            .catch((error) => {
+                console.log(error);
+                return error;
+            })
     }
 }
 // http://localhost:3000/products

@@ -23,9 +23,13 @@
 import VCartItem from './v-cart-item'
 import VListOfProducts from "@/components/list_of_products/v-list-of-products";
 import {mapActions, mapGetters} from "vuex";
+import VCart from "@/components/cart/v-cart";
 let tg = window.Telegram.WebApp;
 //close page after clicked to main button
 tg.onEvent('mainButtonClicked', function(){
+  location.href=VCart.LINK;
+  console.log(VCart.LINK);
+  VCart.SET_LINK_TO_LINK('-');
   tg.close();
 });
 
@@ -54,13 +58,15 @@ export default {
         'PRODUCTS',
         'CART',
         'FAVOURIT',
+          'LINK'
       ])
 
     },
     methods: {
       ...mapActions([
           'DELETE_FROM_CART',
-          'GET_PRODUCTS_FROM_API_CART'
+          'GET_PRODUCTS_FROM_API_CART',
+          'GET_LINK_INVOICE'
       ]),
       deleteFromCart(index){
         this.DELETE_FROM_CART(index);
@@ -68,6 +74,7 @@ export default {
       },
       showInfoListProducts(){
         this.isInfoListProductVisible = true;
+        this.GET_LINK_INVOICE();
         tg.MainButton.show();
       },
       closeInfoListProducts(){

@@ -7,5 +7,8 @@ export default {
     },
     FAVOURIT(state) {
         return state.favourit;
+    },
+    LINK(state) {
+        return state.link;
     }
 }
