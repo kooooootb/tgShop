@@ -31,9 +31,9 @@ export default {
                 return error;
             })
     },
-    GET_PRODUCTS_FROM_API_FAVOURIT({commit}, user_id){
-
-        return axios('https://tgshop.hopto.org/api/favourites/?user_id=' + user_id, {
+    GET_PRODUCTS_FROM_API_FAVOURIT({commit}){
+        let tg = window.Telegram.WebApp;
+        return axios('https://tgshop.hopto.org/api/favourites/?user_id=' + tg.initDataUnsafe.user.id, {
 
             method: "GET"
         })
@@ -54,7 +54,7 @@ export default {
             method: "GET"
         })
             .then((link) => {
-                commit('SET_LINK_TO_LINK', link.data);
+                commit('SET_LINK_TO_LINK', link);
                 return link;
             })
             .catch((error) => {
