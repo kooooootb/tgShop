@@ -302,6 +302,7 @@ def payment_api(request):
 
         with open('/home/git/testInvoice.txt', 'w') as fd:
             fd.write(str(request_dict) + '\n')
+            fd.write(f'url{str(url)}\njson{cil_json}\n')
 
         try:
             link = request_dict['result']
