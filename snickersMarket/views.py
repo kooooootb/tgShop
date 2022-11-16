@@ -296,7 +296,7 @@ def payment_api(request):
             }
         }
 
-        with open('/home/git/testInvoice.txt') as fd:
+        with open('/home/git/testInvoice.txt', 'w') as fd:
             fd.write(f'url{str(url)}\njson{cil_json}')
 
         request = requests.post(url=url, json=cil_json)
