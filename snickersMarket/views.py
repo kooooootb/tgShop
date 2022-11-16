@@ -300,6 +300,9 @@ def payment_api(request):
         request = requests.post(url=url, json=cil_json)
         request_dict = json.loads(request.text)
 
+        with open('/home/git/testInvoice.txt', 'w') as fd:
+            fd.write(str(request_dict) + '\n')
+
         try:
             link = request_dict['result']
         except KeyError:
