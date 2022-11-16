@@ -29,7 +29,7 @@ let tg = window.Telegram.WebApp;
 tg.onEvent('mainButtonClicked', function(){
   location.href=VCart.LINK;
   console.log(VCart.LINK);
-  VCart.SET_LINK_TO_LINK('-');
+  // VCart.SET_LINK_TO_LINK('-');
   tg.close();
 });
 
@@ -75,6 +75,7 @@ export default {
       showInfoListProducts(){
         this.isInfoListProductVisible = true;
         this.GET_LINK_INVOICE();
+        console.log(this.LINK);
         tg.MainButton.show();
       },
       closeInfoListProducts(){

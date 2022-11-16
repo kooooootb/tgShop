@@ -17,7 +17,6 @@
 import VFavouritItem from './v-favourit-item'
 import {mapActions} from "vuex";
 
-let tg = window.Telegram.WebApp;
 
 
 export default {
@@ -47,7 +46,7 @@ export default {
   },
   mounted() {
 
-    this.GET_PRODUCTS_FROM_API_FAVOURIT(tg.initDataUnsafe.user.id);//{userid});
+    this.GET_PRODUCTS_FROM_API_FAVOURIT();//{userid});
     // console.log(window.Telegram.WebApp.initDataUnsafe.user.id);
   }
 
