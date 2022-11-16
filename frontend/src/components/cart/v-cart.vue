@@ -3,6 +3,11 @@
     <h1>Cart</h1>
     <p v-if="!cart_data.length">There are no products in cart...</p>
     <div class="v-cart-list">
+      <v-list-of-products
+          v-if="isInfoListProductVisible"
+          @closeListProducts="closeInfoListProducts"
+      >
+      </v-list-of-products>
       <v-cart-item
         v-for="item in CART"
         :key="item.id"
@@ -10,19 +15,26 @@
         @deleteFromCart="deleteFromCart(item.id)"
       />
     </div>
+    <button class="v-cart__show-info " @click="showInfoListProducts">Click to place an order</button>
   </div>
 </template>
 
 <script>
 import VCartItem from './v-cart-item'
+import VListOfProducts from "@/components/list_of_products/v-list-of-products";
 import {mapActions, mapGetters} from "vuex";
-
-
+let tg = window.Telegram.WebApp;
+//close page after clicked to main button
+tg.onEvent('mainButtonClicked', function(){
+  tg.close();
+});
 
 export default {
+
     name: "v-cart",
     components:{
-      VCartItem
+      VCartItem,
+      VListOfProducts
     },
     props:{
       cart_data: {
@@ -33,14 +45,17 @@ export default {
       }
     },
     data(){
-      return{}
+      return{
+        isInfoListProductVisible: false
+      }
     },
     computed: {
       ...mapGetters([
         'PRODUCTS',
         'CART',
         'FAVOURIT',
-      ]),
+      ])
+
     },
     methods: {
       ...mapActions([
@@ -50,10 +65,17 @@ export default {
       deleteFromCart(index){
         this.DELETE_FROM_CART(index);
         this.GET_PRODUCTS_FROM_API_CART();
+      },
+      showInfoListProducts(){
+        this.isInfoListProductVisible = true;
+        tg.MainButton.show();
+      },
+      closeInfoListProducts(){
+        this.isInfoListProductVisible = false;
+        tg.MainButton.hide();
       }
     },
     mounted() {
-
       this.GET_PRODUCTS_FROM_API_CART();
     }
 
