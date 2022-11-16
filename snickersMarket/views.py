@@ -20,7 +20,8 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework import status, generics
 
 from urllib.parse import urlparse, parse_qs  # for login api
-import requests, os
+
+import requests
 
 
 def index_view(request):
@@ -263,11 +264,12 @@ def entries_api(request, value_name):
 def payment_api(request):
     if request.method == 'GET':
         # get tokens
-        try:
-            bot_token = os.environ['BOT_TOKEN']
-            payment_token = os.environ['PAYMENT_PROVIDER_TOKEN']
-        except KeyError as e:
-            raise RuntimeError('Put tokens in environment') from e
+        with open('/home/git/tgShop/work/BOT_TG/config.py') as cf:
+            for line in cf:
+                if line.startswith('BOT_TOKEN'):
+                    bot_token = line.split()[-1]
+                if line.startswith('PAYMENTS_PROVIDER_TOKEN'):
+                    payment_token = line.split()[-1]
 
         # get all objects (array of labeledPrice)
         prices = []
