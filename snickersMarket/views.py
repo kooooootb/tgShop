@@ -276,10 +276,10 @@ def payment_api(request):
         user = request.user
         products = user.buyer.bag.all()
         for product in products:
-            prices += {
+            prices.append({
                 'label': product.name,
                 'amount': product.price * 100,
-            }
+            })
 
         # get url for requesting link
         url = f'https://api.telegram.org/bot{bot_token}/createInvoiceLink'
