@@ -8,6 +8,9 @@ export default {
     SET_PRODUCTS_TO_FAVOURIT: (state, favourit) => {
         state.favourit = favourit;
     },
+    SET_LINK_TO_LINK: (state, link) => {
+        state.link = link;
+    },
 
 
     SET_CART: (state, product) => {
