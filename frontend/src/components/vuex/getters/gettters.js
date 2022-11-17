@@ -9,6 +9,7 @@ export default {
         return state.favourit;
     },
     LINK(state) {
+        console.log("getter="+state.link);
         return state.link;
     }
 }

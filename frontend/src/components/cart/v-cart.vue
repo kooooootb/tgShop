@@ -77,9 +77,10 @@ export default {
         this.isInfoListProductVisible = true;
         this.GET_LINK_INVOICE();
         console.log('link1= '+this.LINK);
+        console.log('link get invoice= '+this.GET_LINK_INVOICE());
         tg.MainButton.show();
         tg.MainButton.onClick(function(){
-          console.log('link2='+this.LINK);
+          console.log('link2='+this.GET_LINK_INVOICE());
           location.href=this.LINK;
           // VCart.SET_LINK_TO_LINK('-');
           tg.close();
