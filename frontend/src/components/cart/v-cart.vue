@@ -37,11 +37,15 @@ let tg = window.Telegram.WebApp;
 export default {
 
     name: "v-cart",
+    state:{
+      link: ''
+    },
     components:{
       VCartItem,
-      VListOfProducts
+      VListOfProducts,
     },
     props:{
+
       cart_data: {
         type: Array,
         default(){
@@ -76,11 +80,12 @@ export default {
       showInfoListProducts(){
         this.isInfoListProductVisible = true;
         this.GET_LINK_INVOICE();
+        this.link = String(this.LINK);
         console.log('link1= '+String(this.LINK));
         tg.MainButton.show();
         tg.onEvent('mainButtonClicked', function(){
-          console.log('link2='+String(VCart.LINK));
-          location.href=String(VCart.LINK);
+          console.log('link2='+String(VCart.link));
+          location.href=String(VCart.link);
           // VCart.SET_LINK_TO_LINK('-');
           tg.close();
         });
