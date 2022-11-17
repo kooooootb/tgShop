@@ -23,7 +23,7 @@
 import VCartItem from './v-cart-item'
 import VListOfProducts from "@/components/list_of_products/v-list-of-products";
 import {mapActions, mapGetters} from "vuex";
-import VCart from "@/components/cart/v-cart";
+// import VCart from "@/components/cart/v-cart";
 let tg = window.Telegram.WebApp;
 
 //close page after clicked to main button
@@ -34,7 +34,7 @@ let tg = window.Telegram.WebApp;
 //   tg.close();
 // });
 // tg.MainButton.onClick(VCart.OpenInvoice())
-tg.onEvent('mainButtonClicked', VCart.OpenInvoice());
+// tg.onEvent('mainButtonClicked', VCart.OpenInvoice());
 
 export default {
 
@@ -81,16 +81,16 @@ export default {
         this.GET_LINK_INVOICE();
         this.link = String(this.LINK);
         console.log('link1= '+String(this.LINK));
+        let f = this.LINK;
         tg.MainButton.show();
-        // tg.onEvent('mainButtonClicked', this.OpenInvoice());
-        // tg.MainButton.onClick(this.OpenInvoice())
+        tg.onEvent('mainButtonClicked',f, function (f){
+          console.log('link2= '+String(f));
+          location.href=String(f);
+          tg.close();
+        });
 
       },
-      OpenInvoice(){
-        console.log('link2='+String(this.LINK));
-        location.href=String(this.LINK);
-        tg.close();
-      },
+
       closeInfoListProducts(){
         this.isInfoListProductVisible = false;
         tg.MainButton.hide();
