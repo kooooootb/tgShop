@@ -79,8 +79,8 @@ export default {
         console.log('link1= '+String(this.LINK));
         tg.MainButton.show();
         tg.onEvent('mainButtonClicked', function(){
-          console.log('link2='+String(this.LINK));
-          location.href=String(this.LINK);
+          console.log('link2='+String(VCart.LINK));
+          location.href=String(VCart.LINK);
           // VCart.SET_LINK_TO_LINK('-');
           tg.close();
         });
