@@ -36,14 +36,17 @@ let tg = window.Telegram.WebApp;
 // tg.MainButton.onClick(VCart.OpenInvoice())
 // tg.onEvent('mainButtonClicked', VCart.OpenInvoice());
 tg.onEvent('mainButtonClicked', function (){
-  console.log('link2= '+String(VCart.computed.LINK));
-  location.href=String(VCart.computed.LINK);
+  console.log('link2= '+String(VCart.state.link));
+  location.href=String(VCart.state.link);
   tg.close();
 })
 
 export default {
 
     name: "v-cart",
+    state: {
+      link: ''
+    },
     components:{
       VCartItem,
       VListOfProducts,
