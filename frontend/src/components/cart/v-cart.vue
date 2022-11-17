@@ -27,12 +27,12 @@ import VCart from "@/components/cart/v-cart";
 let tg = window.Telegram.WebApp;
 
 //close page after clicked to main button
-tg.onEvent('mainButtonClicked', function(){
-  console.log('link2='+String(VCart.LINK));
-  location.href=String(VCart.LINK);
-  // VCart.SET_LINK_TO_LINK('-');
-  tg.close();
-});
+// tg.onEvent('mainButtonClicked', function(){
+//   console.log('link2='+String(VCart.LINK));
+//   location.href=String(VCart.LINK);
+//   // VCart.SET_LINK_TO_LINK('-');
+//   tg.close();
+// });
 
 export default {
 
@@ -78,6 +78,12 @@ export default {
         this.GET_LINK_INVOICE();
         console.log('link1= '+String(this.LINK));
         tg.MainButton.show();
+        tg.onEvent('mainButtonClicked', function(){
+          console.log('link2='+String(VCart.LINK));
+          location.href=String(VCart.LINK);
+          // VCart.SET_LINK_TO_LINK('-');
+          tg.close();
+        });
 
       },
       closeInfoListProducts(){
