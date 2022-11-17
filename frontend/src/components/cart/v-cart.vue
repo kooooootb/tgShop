@@ -33,13 +33,11 @@ let tg = window.Telegram.WebApp;
 //   // VCart.SET_LINK_TO_LINK('-');
 //   tg.close();
 // });
+// tg.MainButton.onClick(VCart.OpenInvoice())
 
 export default {
 
     name: "v-cart",
-    state:{
-      link: ''
-    },
     components:{
       VCartItem,
       VListOfProducts,
@@ -83,13 +81,13 @@ export default {
         this.link = String(this.LINK);
         console.log('link1= '+String(this.LINK));
         tg.MainButton.show();
-        tg.onEvent('mainButtonClicked', function(){
-          console.log('link2='+String(VCart.link));
-          location.href=String(VCart.link);
-          // VCart.SET_LINK_TO_LINK('-');
-          tg.close();
-        });
+        tg.onEvent('mainButtonClicked', this.OpenInvoice());
 
+      },
+      OpenInvoice(){
+        console.log('link2='+String(this.LINK));
+        location.href=String(this.LINK);
+        tg.close();
       },
       closeInfoListProducts(){
         this.isInfoListProductVisible = false;
