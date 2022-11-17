@@ -54,7 +54,7 @@ export default {
             method: "GET"
         })
             .then((link) => {
-                commit('SET_LINK_TO_LINK', link.data.toString());
+                commit('SET_LINK_TO_LINK', link.data);
                 return link;
             })
             .catch((error) => {

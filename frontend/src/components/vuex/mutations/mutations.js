@@ -9,7 +9,9 @@ export default {
         state.favourit = favourit;
     },
     SET_LINK_TO_LINK: (state, link) => {
+        console.log('setter'+ link);
         state.link = link;
+        console.log('setter state.link'+ state.link);
     },
 
 
