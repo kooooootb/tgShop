@@ -55,7 +55,7 @@ export default {
         })
             .then((link) => {
                 commit('SET_LINK_TO_LINK', link.data);
-                return link.data;
+                return link;
             })
             .catch((error) => {
                 console.log(error);

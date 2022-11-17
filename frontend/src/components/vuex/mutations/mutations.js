@@ -9,7 +9,7 @@ export default {
         state.favourit = favourit;
     },
     SET_LINK_TO_LINK: (state, link) => {
-        state.link = link;
+        state.link = String(link);
     },
 
 
