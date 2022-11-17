@@ -35,11 +35,12 @@ let tg = window.Telegram.WebApp;
 // });
 // tg.MainButton.onClick(VCart.OpenInvoice())
 // tg.onEvent('mainButtonClicked', VCart.OpenInvoice());
-tg.onEvent('mainButtonClicked', function (){
-  console.log('link2= '+String(VCart.state.link));
-  location.href=String(VCart.state.link);
-  tg.close();
-})
+
+// tg.onEvent('mainButtonClicked', function (){
+//   console.log('link2= '+String(VCart.LINK));
+//   location.href=String(VCart.state.link);
+//   tg.close();
+// })
 
 export default {
 
@@ -87,10 +88,15 @@ export default {
       showInfoListProducts(){
         this.isInfoListProductVisible = true;
         this.GET_LINK_INVOICE();
-        this.link = String(this.LINK);
         console.log('link1= '+String(this.LINK));
-        location.href=String(this.LINK);
+        // location.href=String(this.LINK);
         tg.MainButton.show();
+
+        tg.onEvent('mainButtonClicked', function (){
+          console.log('link2= '+String(VCart.LINK));
+          location.href=String(VCart.LINK);
+          tg.close();
+        })
       },
 
       closeInfoListProducts(){

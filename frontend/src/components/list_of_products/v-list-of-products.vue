@@ -23,7 +23,8 @@
 
 <script>
 
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
+// import VCart from "@/components/cart/v-cart";
 
 export default {
   name: "v-list-of-products",
@@ -33,19 +34,11 @@ export default {
   data(){
     return {}
   },
-  computed:{
+  computed: {
+    ...mapGetters([
+      'LINK'
+    ])
 
-    // cartTotal(){
-    //   let result = []
-    //   for( let item of this.list_cart_data){
-    //     result.push(item.price)
-    //   }
-    //   result = result.reduce(function (sum, el){
-    //     return sum + el;
-    //   })
-    //
-    //   return result;
-    // }
   },
   methods: {
     ...mapActions([
@@ -54,6 +47,7 @@ export default {
     closeListProducts(){
       this.$emit('closeListProducts')
     }
+
 
 
   },
