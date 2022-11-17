@@ -23,6 +23,7 @@
 import VCartItem from './v-cart-item'
 import VListOfProducts from "@/components/list_of_products/v-list-of-products";
 import {mapActions, mapGetters} from "vuex";
+// import VCart from "@/components/cart/v-cart";
 let tg = window.Telegram.WebApp;
 
 //close page after clicked to main button
@@ -80,7 +81,8 @@ export default {
         this.link = String(this.LINK);
         console.log('link1= '+String(this.LINK));
         tg.MainButton.show();
-        tg.onEvent('mainButtonClicked', this.OpenInvoice());
+        // tg.onEvent('mainButtonClicked', this.OpenInvoice());
+        tg.MainButton.onClick(this.OpenInvoice())
 
       },
       OpenInvoice(){
