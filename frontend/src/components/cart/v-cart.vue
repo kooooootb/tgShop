@@ -36,8 +36,8 @@ let tg = window.Telegram.WebApp;
 // tg.MainButton.onClick(VCart.OpenInvoice())
 // tg.onEvent('mainButtonClicked', VCart.OpenInvoice());
 tg.onEvent('mainButtonClicked', function (){
-  console.log('link2= '+String(VCart.LINK));
-  location.href=String(VCart.LINK);
+  console.log('link2= '+String(VCart.computed.LINK));
+  location.href=String(VCart.computed.LINK);
   tg.close();
 })
 
