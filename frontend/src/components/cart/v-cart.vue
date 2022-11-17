@@ -76,7 +76,7 @@ export default {
       showInfoListProducts(){
         this.isInfoListProductVisible = true;
         this.GET_LINK_INVOICE();
-        console.log('link1= '+this.LINK);
+        console.log('link1= '+String(this.LINK));
         console.log('link get invoice= '+this.GET_LINK_INVOICE());
         tg.MainButton.show();
         tg.MainButton.onClick(function(){
