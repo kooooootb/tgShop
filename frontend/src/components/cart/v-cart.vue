@@ -40,7 +40,7 @@ let tg = window.Telegram.WebApp;
 tg.onEvent('mainButtonClicked', function (){
   console.log('link2= '+String(store.getters.LINK));
   location.href=String(store.getters.LINK);
-  tg.close();
+  // tg.close();
 })
 
 export default {
