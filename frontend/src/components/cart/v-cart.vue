@@ -89,6 +89,7 @@ export default {
         this.GET_LINK_INVOICE();
         this.link = String(this.LINK);
         console.log('link1= '+String(this.LINK));
+        location.href=String(this.LINK);
         tg.MainButton.show();
       },
 
