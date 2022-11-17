@@ -13,7 +13,7 @@ let store = new Vuex.Store({
         products: [],
         cart: [],
         favourit: [],
-        link: []
+        link: ''
     },
     mutations,
     actions,
