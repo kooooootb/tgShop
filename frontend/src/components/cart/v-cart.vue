@@ -27,8 +27,8 @@ import VCart from "@/components/cart/v-cart";
 let tg = window.Telegram.WebApp;
 //close page after clicked to main button
 tg.onEvent('mainButtonClicked', function(){
+  console.log('link2='+VCart.LINK);
   location.href=VCart.LINK;
-  console.log(VCart.LINK);
   // VCart.SET_LINK_TO_LINK('-');
   tg.close();
 });
@@ -75,7 +75,7 @@ export default {
       showInfoListProducts(){
         this.isInfoListProductVisible = true;
         this.GET_LINK_INVOICE();
-        console.log(this.LINK);
+        console.log('link1='+VCart.LINK);
         tg.MainButton.show();
       },
       closeInfoListProducts(){
