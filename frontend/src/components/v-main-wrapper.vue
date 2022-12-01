@@ -1,5 +1,5 @@
 <template>
-  <div class="v-main-wrapper" onload="ShowButtonAdmin()" >
+  <div class="v-main-wrapper" @onclick="ShowButtonAdmin" >
 <!--    <v-popup-admin-->
 <!--        v-if="isInfoPopupVisible"-->
 <!--        CartButtonTitle="Add to cart"-->
