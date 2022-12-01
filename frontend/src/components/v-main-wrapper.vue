@@ -64,7 +64,7 @@ export default {
       return{
         title: 'Main wrapper',
         isInfoPopupAdminVisible: false,
-        isInfoButtonAdminVisible: false
+        isInfoButtonAdminVisible: true
       }
     },
     computed: {
@@ -87,7 +87,8 @@ export default {
     }, //clicks, i tp
     watch: {},
     mounted() {
-      console.log('hello, im a live')
+      console.log('hello, im a live');
+      console.log(this.isInfoButtonAdminVisible)
     }
   }
 </script>
