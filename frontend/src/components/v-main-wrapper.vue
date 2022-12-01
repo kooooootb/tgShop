@@ -1,5 +1,14 @@
 <template>
   <div class="v-main-wrapper">
+    <v-popup-admin
+        v-if="isInfoPopupVisible"
+        CartButtonTitle="Add to cart"
+        FavouritButtonTitle="Add to favourite"
+        :popupTitle="cart_item_data.name"
+        @closePopup="closeInfoPopup"
+    >
+      <a>it's popup</a>
+    </v-popup-admin>
 
         <keep-alive>
           <router-view>
@@ -25,6 +34,9 @@
           <p class="v-main-wrapper__cart" >Cart</p>
         </router-link>
       </div>
+      <div v-if="window.Telegram.WebApp.initDataUnsafe.user.id === 435066431">
+        <button class="v-main-wrapper__admin" @click="ShowPopupInfo">Admin</button>
+      </div>
 
     </div>
   </div>
@@ -38,16 +50,21 @@
  // import VCart from "@/components/v-cart";
 import {mapGetters} from "vuex";
  // import VMainMenu from "@/components/v-main-menu";
-
+ import VPopupAdmin from "@/components/popup/v-popup-admin";
+// let tg = window.Telegram.WebApp;
 
 export default {
     name: "v-main-wrapper",
-  components: {},
+  components: {
+      VPopupAdmin
+  },
   // components: {VCart, VCatalog},
     props:{},
     data(){
       return{
-        title: 'Main wrapper'
+        title: 'Main wrapper',
+        isInfoPopupAdminVisible: false,
+        isInfoButtonAdminVisible: false
       }
     },
     computed: {
@@ -58,7 +75,16 @@ export default {
 
       ])
     },
-    methods: {}, //clicks, i tp
+    methods: {
+      // ShowButtonAdmin(){
+      //   if(tg.initDataUnsafe.user.id === 435066431) {
+      //     this.isInfoButtonAdminVisible = true;
+      //   }
+      // },
+      ShowPopupInfo(){
+        this.isInfoPopupAdminVisible = true;
+      }
+    }, //clicks, i tp
     watch: {},
     mounted() {
       console.log('hello, im a live')
@@ -104,6 +130,10 @@ export default {
       border: solid 1px #aeaeae;
     }
     &__favourit{
+      padding: $padding*2;
+      border: solid 1px #aeaeae;
+    }
+    &__admin{
       padding: $padding*2;
       border: solid 1px #aeaeae;
     }
