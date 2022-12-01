@@ -1,5 +1,5 @@
 <template>
-  <div class="v-main-wrapper" onload="ShowButtonAdmin" >
+  <div class="v-main-wrapper" onload="ShowButtonAdmin()" >
 <!--    <v-popup-admin-->
 <!--        v-if="isInfoPopupVisible"-->
 <!--        CartButtonTitle="Add to cart"-->
@@ -93,6 +93,7 @@ export default {
       console.log(this.isInfoButtonAdminVisible)
     }
   }
+
 </script>
 
 <style lang="scss">
