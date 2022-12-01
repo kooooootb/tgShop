@@ -1,5 +1,5 @@
 <template>
-  <div class="v-main-wrapper">
+  <div class="v-main-wrapper" onload="ShowButtonAdmin" >
 <!--    <v-popup-admin-->
 <!--        v-if="isInfoPopupVisible"-->
 <!--        CartButtonTitle="Add to cart"-->
@@ -34,7 +34,7 @@
           <p class="v-main-wrapper__cart" >Cart</p>
         </router-link>
       </div>
-      <div v-if="window.Telegram.WebApp.initDataUnsafe.user.id === 435066431">
+      <div v-if="isInfoButtonAdminVisible">
         <button class="v-main-wrapper__admin" @click="ShowPopupInfo">Admin</button>
       </div>
 
@@ -51,7 +51,7 @@
 import {mapGetters} from "vuex";
  // import VMainMenu from "@/components/v-main-menu";
  // import VPopupAdmin from "@/components/popup/v-popup-admin";
-// let tg = window.Telegram.WebApp;
+let tg = window.Telegram.WebApp;
 
 export default {
     name: "v-main-wrapper",
@@ -76,11 +76,11 @@ export default {
       ])
     },
     methods: {
-      // ShowButtonAdmin(){
-      //   if(tg.initDataUnsafe.user.id === 435066431) {
-      //     this.isInfoButtonAdminVisible = true;
-      //   }
-      // },
+      ShowButtonAdmin(){
+        if(tg.initDataUnsafe.user.id === 435066431) {
+          this.isInfoButtonAdminVisible = true;
+        }
+      },
       ShowPopupInfo(){
         this.isInfoPopupAdminVisible = true;
       }
