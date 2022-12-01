@@ -1,14 +1,14 @@
 <template>
   <div class="v-main-wrapper">
-    <v-popup-admin
-        v-if="isInfoPopupVisible"
-        CartButtonTitle="Add to cart"
-        FavouritButtonTitle="Add to favourite"
-        :popupTitle="cart_item_data.name"
-        @closePopup="closeInfoPopup"
-    >
-      <a>it's popup</a>
-    </v-popup-admin>
+<!--    <v-popup-admin-->
+<!--        v-if="isInfoPopupVisible"-->
+<!--        CartButtonTitle="Add to cart"-->
+<!--        FavouritButtonTitle="Add to favourite"-->
+<!--        :popupTitle="cart_item_data.name"-->
+<!--        @closePopup="closeInfoPopup"-->
+<!--    >-->
+<!--      <a>it's popup</a>-->
+<!--    </v-popup-admin>-->
 
         <keep-alive>
           <router-view>
@@ -50,13 +50,13 @@
  // import VCart from "@/components/v-cart";
 import {mapGetters} from "vuex";
  // import VMainMenu from "@/components/v-main-menu";
- import VPopupAdmin from "@/components/popup/v-popup-admin";
+ // import VPopupAdmin from "@/components/popup/v-popup-admin";
 // let tg = window.Telegram.WebApp;
 
 export default {
     name: "v-main-wrapper",
   components: {
-      VPopupAdmin
+      // VPopupAdmin
   },
   // components: {VCart, VCatalog},
     props:{},

@@ -121,7 +121,6 @@ export default {
       color: #ffffff;
       background: #02061a;
       margin: $margin*2;
-      padding: 8px;
     }
     .v-popup-add-to-cart-btn{
       margin: $margin*2;
