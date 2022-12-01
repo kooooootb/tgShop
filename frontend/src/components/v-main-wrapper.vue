@@ -64,7 +64,7 @@ export default {
       return{
         title: 'Main wrapper',
         isInfoPopupAdminVisible: false,
-        isInfoButtonAdminVisible: true
+        isInfoButtonAdminVisible: false
       }
     },
     computed: {
