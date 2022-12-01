@@ -77,6 +77,8 @@ export default {
     },
     methods: {
       ShowButtonAdmin(){
+        console.log('im did it');
+        console.log(tg.initDataUnsafe.user.id);
         if(tg.initDataUnsafe.user.id === 435066431) {
           this.isInfoButtonAdminVisible = true;
         }
